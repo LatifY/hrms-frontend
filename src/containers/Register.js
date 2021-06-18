@@ -36,11 +36,9 @@ export default function Register() {
           <Header as="h1" color="teal" textAlign="center">
             Kayıt Ol
           </Header>
-          <Form size="large">
-            <Segment stacked>
-              <Tab panes={tabs} menu={{ secondary: true }} />
-            </Segment>
-          </Form>
+          <Segment stacked>
+            <Tab panes={tabs} menu={{ secondary: true }} />
+          </Segment>
           <Message>
             <h4>
               Hesabınız zaten var mı?{" "}
@@ -54,7 +52,7 @@ export default function Register() {
       <img
         src={undraw_register}
         width="560"
-        style={{ position: "fixed", bottom: 150, right: 10, zIndex:-1 }}
+        style={{ position: "fixed", bottom: 150, right: 10, zIndex: -1 }}
       />
     </>
   );

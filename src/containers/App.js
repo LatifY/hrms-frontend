@@ -10,12 +10,16 @@ import Navi from "./Navi";
 import Home from "./Home";
 import Login from "./Login";
 import Register from "./Register";
+import JobAdvertisementCreate from "./JobAdvertisementCreate";
 import Footer from "./Footer";
+
+import { ToastContainer } from "react-toastify"
 
 export default function App() {
   return (
     <Router>
       <div className="App">
+        <ToastContainer position="bottom-left"/>
         <Navi />
         <Container className="main">
           <Switch>
@@ -24,6 +28,8 @@ export default function App() {
             <Route exact path="/dashboard"> <Dashboard /> </Route>
             <Route exact path="/login"> <Login /> </Route>
             <Route exact path="/register"> <Register /> </Route>
+
+            <Route exact path="/jobAdvertisement/create"> <JobAdvertisementCreate /> </Route>
           </Switch>
         </Container>
         <Footer/>

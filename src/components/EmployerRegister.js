@@ -1,25 +1,46 @@
-import React, { Component } from "react";
+import React from "react";
 import {
-  Grid,
-  Header,
-  Segment,
   Form,
   Button,
-  Message,
-  Tab,
 } from "semantic-ui-react";
 
-export default class EmployerRegister extends Component {
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
-  save = (employee) => {
-    
-  }
+export default function EmployerRegister() {
+  const EmployerRegisterSchema = Yup.object().shape({
+    companyName: Yup.string().required().min(1).max(100),
+    website: Yup.string().required().min(1).max(100),
+    email: Yup.string().email().required().min(1).max(100),
+    phone: Yup.string().required().min(1).max(11),
+    password: Yup.string().required().min(1).max(100),
+    passwordRetry: Yup.string().required().min(1).max(100),
+  });
 
-  render() {
-    return (
-      <>
+  const formik = useFormik({
+    initialValues: {
+      companyName: undefined,
+      website: undefined,
+      email: undefined,
+      phone: undefined,
+      password: undefined,
+      passwordRetry: undefined,
+    },
+    validationSchema: EmployerRegisterSchema,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
+
+  return (
+    <>
+      <Form onSubmit={formik.handleSubmit}>
         <Form.Input
           fluid
+          name="companyName"
+          value={formik.values.companyName}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           icon="building"
           iconPosition="left"
           placeholder="Şirket Adı"
@@ -27,6 +48,10 @@ export default class EmployerRegister extends Component {
         />
         <Form.Input
           fluid
+          name="website"
+          value={formik.values.website}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           icon="world"
           iconPosition="left"
           placeholder="Website"
@@ -35,6 +60,10 @@ export default class EmployerRegister extends Component {
 
         <Form.Input
           fluid
+          name="email"
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           icon="mail"
           iconPosition="left"
           placeholder="E-Posta"
@@ -44,17 +73,25 @@ export default class EmployerRegister extends Component {
 
         <Form.Input
           fluid
+          name="phone"
+          value={formik.values.phone}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           icon="phone"
           iconPosition="left"
           placeholder="Telefon No"
           type="tel"
-          pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+          pattern="[0-9]{10}"
           required
         />
 
         <Form.Group widths="equal">
           <Form.Input
             fluid
+            name="password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             icon="lock"
             iconPosition="left"
             placeholder="Şifre"
@@ -63,6 +100,10 @@ export default class EmployerRegister extends Component {
           />
           <Form.Input
             fluid
+            name="passwordRetry"
+            value={formik.values.passwordRetry}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             icon="lock"
             iconPosition="left"
             placeholder="Şifre Tekrarı"
@@ -71,10 +112,10 @@ export default class EmployerRegister extends Component {
           />
         </Form.Group>
         <br />
-        <Button color="teal" fluid size="large">
+        <Button type="submit" color="teal" fluid size="large">
           Kayıt Ol
         </Button>
-      </>
-    );
-  }
+      </Form>
+    </>
+  );
 }

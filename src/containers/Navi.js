@@ -39,7 +39,29 @@ export default class Navi extends Component {
               name="anasayfa"
               active={activeItem === "anasayfa"}
               onClick={this.handleItemClick}
-            ></Menu.Item>
+            />
+            <Menu.Item
+              active
+              as={Link}
+              link="true"
+              to="/jobAdvertisements"
+              name="ilan"
+              active={activeItem === "ilan"}
+              onClick={this.handleItemClick}
+            >
+              İş İlanları
+            </Menu.Item>
+            <Menu.Item
+              active
+              as={Link}
+              link="true"
+              to="/resumees"
+              name="cv"
+              active={activeItem === "cv"}
+              onClick={this.handleItemClick}
+            >
+              CV'ler
+            </Menu.Item>
             <Menu.Item
               as={Link}
               link="true"
@@ -49,7 +71,18 @@ export default class Navi extends Component {
               onClick={this.handleItemClick}
             />
             <Menu.Item position="right">
-
+              <Button
+                color="black"
+                as={Link}
+                to="/jobAdvertisement/create"
+                name="jobAdvertisementCreate"
+                link="true"
+                active={activeItem === "jobAdvertisementCreate"}
+                onClick={this.handleItemClick}
+                style={{ marginLeft: "1em" }}
+              >
+                İş İlanı Oluştur
+              </Button>
               <Button
                 color="teal"
                 as={Link}
@@ -81,7 +114,6 @@ export default class Navi extends Component {
     );
   }
 }
-
 
 /*              <Dropdown text="Controllers">
                 <Dropdown.Menu>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import DataTableProfile from "../DataTableProfile";
-import DataTable from "../DataTable"
-import { PersonnelService } from "../../services/personnelService";
+import DataTableProfile from "../layouts/DataTableLayout/DataTableProfile";
+import DataTable from "../layouts/DataTableLayout/DataTable"
+import PersonnelService from "../../services/personnelService";
 
 export default function PersonnelController() {
 

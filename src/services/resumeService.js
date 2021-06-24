@@ -1,7 +1,7 @@
 import axios from "axios"
 import * as constants from "../constants/constantsApi"
 
-export class ResumeService{
+export default class ResumeService{
   //get
   getAll(){
     return axios.get(constants.RESUMEES)

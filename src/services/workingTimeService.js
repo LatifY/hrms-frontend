@@ -1,7 +1,7 @@
 import axios from "axios"
 import * as constants from "../constants/constantsApi"
 
-export class WorkingTimeService{
+export default class WorkingTimeService{
   //get
   getAll(){
     return axios.get(constants.WORKING_TIMES)

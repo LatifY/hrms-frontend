@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import DataTable from "../DataTable"
-import { AbilityService } from "../../services/abilityService";
+import DataTable from "../layouts/DataTableLayout/DataTable"
+import AbilityService from "../../services/abilityService";
 
 export default function AbilityController() {
   const [abilities, setAbilities] = useState([]);

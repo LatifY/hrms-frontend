@@ -41,6 +41,8 @@ export default function Footer() {
               <List link inverted>
                 <List.Item as="a" href="https://latifyilmaz.com">Latif Yılmaz</List.Item>
                 <List.Item as="a" href="https://www.kodlama.io">kodlama.io</List.Item>
+                <List.Item as="a" href="https://github.com/LatifY/hrms-frontend">Front-End Github</List.Item>
+                <List.Item as="a" href="https://github.com/LatifY/HRMS">Back-End Github</List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={7}>

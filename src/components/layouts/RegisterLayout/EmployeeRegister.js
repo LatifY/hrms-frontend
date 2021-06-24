@@ -4,7 +4,7 @@ import { Button, FormGroup } from "semantic-ui-react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
-import HRMSInput from "../utilities/fields/HRMSInput";
+import HRMSInput from "../../../utilities/fields/HRMSInput";
 
 export default function EmployeeRegister() {
   const ageLimit = Number(new Date().getFullYear() - 18)

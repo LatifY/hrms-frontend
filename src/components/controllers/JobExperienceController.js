@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import DataTable from "../DataTable"
-import { JobExperienceService } from "../../services/jobExperienceService";
+import DataTable from "../layouts/DataTableLayout/DataTable"
+import JobExperienceService from "../../services/jobExperienceService";
 
 export default function JobExperienceController() {
   const [jobExperiences, setJobExperiences] = useState([]);

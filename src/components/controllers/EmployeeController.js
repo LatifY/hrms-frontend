@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import DataTableProfile from "../DataTableProfile";
-import DataTable from "../DataTable";
-import { EmployeeService } from "../../services/employeeService";
+import DataTableProfile from "../layouts/DataTableLayout/DataTableProfile";
+import DataTable from "../layouts/DataTableLayout/DataTable";
+import EmployeeService from "../../services/employeeService";
 
 export default function EmployeeController() {
   const [employees, setEmployees] = useState([]);

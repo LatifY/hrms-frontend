@@ -3,15 +3,13 @@ import {
   Grid,
   Header,
   Segment,
-  Form,
-  Button,
   Message,
   Tab,
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import undraw_register from "../assets/images/undraw_register.png";
-import EmployeeRegister from "../components/EmployeeRegister";
-import EmployerRegister from "../components/EmployerRegister";
+import EmployeeRegister from "../components/layouts/RegisterLayout/EmployeeRegister";
+import EmployerRegister from "../components/layouts/RegisterLayout/EmployerRegister";
 
 export default function Register() {
   const tabs = [

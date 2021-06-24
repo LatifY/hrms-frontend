@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import DataTable from "../DataTable"
-import { CityService } from "../../services/cityService";
+import DataTable from "../layouts/DataTableLayout/DataTable"
+import CityService from "../../services/cityService";
 
 export default function CityController() {
   const [cities, setCities] = useState([]);

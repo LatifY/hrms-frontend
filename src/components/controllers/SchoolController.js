@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import DataTable from "../DataTable"
-import { SchoolService } from "../../services/schoolService";
+import DataTable from "../layouts/DataTableLayout/DataTable"
+import SchoolService from "../../services/schoolService";
 
 export default function SchoolController() {
   const [schools, setSchools] = useState([]);

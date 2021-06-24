@@ -4,7 +4,7 @@ import "semantic-ui-css/semantic.min.css";
 import "./assets/css/index.css";
 import "react-toastify/dist/ReactToastify.min.css"
 
-import App from "./containers/App";
+import App from "./pages/App";
 
 import { configureStore } from "./store/configureStore";
 import { Provider } from "react-redux";

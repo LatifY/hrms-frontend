@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import DataTable from "../DataTable"
-import { PositionService } from "../../services/positionService";
+import DataTable from "../layouts/DataTableLayout/DataTable"
+import PositionService from "../../services/positionService";
 
 export default function PositionController() {
   const [positions, setPositions] = useState([]);

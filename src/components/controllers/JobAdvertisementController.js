@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import DataTableProfile from "../DataTableProfile";
-import DataTable from "../DataTable";
-import { JobAdvertisementService } from "../../services/jobAdvertisementService";
+import DataTableProfile from "../layouts/DataTableLayout/DataTableProfile";
+import DataTable from "../layouts/DataTableLayout/DataTable";
+import JobAdvertisementService from "../../services/jobAdvertisementService";
 
 export default function JobAdvertisementController() {
   const [jobAdvertisements, setJobAdvertisements] = useState([]);

@@ -1,7 +1,7 @@
 import axios from "axios"
 import * as constants from "../constants/constantsApi"
 
-export class PositionService{
+export default class PositionService{
   //get
   getAll(){
     return axios.get(constants.POSITIONS)

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { ResumeService } from "../../services/resumeService";
-import DataTableProfile from "../DataTableProfile";
-import DataTable from "../DataTable";
+import ResumeService from "../../services/resumeService";
+import DataTableProfile from "../layouts/DataTableLayout/DataTableProfile";
+import DataTable from "../layouts/DataTableLayout/DataTable";
 import * as constants from "../../constants/constantsMethods"
 
 export default function ResumeController() {

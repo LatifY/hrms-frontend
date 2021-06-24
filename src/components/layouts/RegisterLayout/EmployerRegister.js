@@ -4,8 +4,8 @@ import { Button, FormGroup } from "semantic-ui-react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
-import HRMSInput from "../utilities/fields/HRMSInput";
-import HRMSPhoneInput from "../utilities/fields/HRMSPhoneInput";
+import HRMSInput from "../../../utilities/fields/HRMSInput";
+import HRMSPhoneInput from "../../../utilities/fields/HRMSPhoneInput";
 
 export default function EmployerRegister() {
   const validationSchema = Yup.object().shape({

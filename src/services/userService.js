@@ -1,7 +1,7 @@
 import axios from "axios"
 import * as constants from "../constants/constantsApi"
 
-export class UserService{
+export default class UserService{
   //get
   getAll(){
     return axios.get(constants.USERS)

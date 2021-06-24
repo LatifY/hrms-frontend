@@ -7,9 +7,9 @@ import * as Yup from "yup";
 
 import undraw_jobAdvertisementCreate from "../assets/images/undraw_jobAdvertisementCreate.png";
 
-import { PositionService } from "../services/positionService";
-import { CityService } from "../services/cityService";
-import { WorkingTimeService } from "../services/workingTimeService";
+import PositionService from "../services/positionService";
+import CityService from "../services/cityService";
+import WorkingTimeService from "../services/workingTimeService";
 
 import HRMSDropdown from "../utilities/fields/HRMSDropdown";
 import HRMSInput from "../utilities/fields/HRMSInput";

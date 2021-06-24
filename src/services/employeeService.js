@@ -1,7 +1,7 @@
 import axios from "axios"
 import * as constants from "../constants/constantsApi"
 
-export class EmployeeService{
+export default class EmployeeService{
   //get
   getAll(){
     return axios.get(constants.EMPLOYEES)

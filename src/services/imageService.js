@@ -1,7 +1,7 @@
 import axios from "axios"
 import * as constants from "../constants/constantsApi"
 
-export class ImageService{
+export default class ImageService{
   //get
   getAll(){
     return axios.get(constants.IMAGES)

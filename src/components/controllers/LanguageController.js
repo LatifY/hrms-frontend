@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import DataTable from "../DataTable"
-import { LanguageService } from "../../services/languageService";
+import DataTable from "../layouts/DataTableLayout/DataTable"
+import LanguageService from "../../services/languageService";
 
 export default function LanguageController() {
   const [languages, setLanguages] = useState([]);

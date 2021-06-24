@@ -1,7 +1,7 @@
 import axios from "axios"
 import * as constants from "../constants/constantsApi"
 
-export class CityService{
+export default class CityService{
   //get
   getAll(){
     return axios.get(constants.CITIES)

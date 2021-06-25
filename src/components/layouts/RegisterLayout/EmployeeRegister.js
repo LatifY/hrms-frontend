@@ -5,6 +5,7 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import HRMSInput from "../../../utilities/fields/HRMSInput";
+import { toast } from "react-toastify";
 
 export default function EmployeeRegister() {
   const ageLimit = Number(new Date().getFullYear() - 18)
@@ -33,7 +34,9 @@ export default function EmployeeRegister() {
   };
 
   const onSubmit = (values) => {
-    alert(JSON.stringify(values, null, 2));
+    toast.success("Kayıt işlemi başarılı!")
+
+    //alert(JSON.stringify(values, null, 2));
   };
 
   return (

@@ -13,13 +13,15 @@ import Register from "./Register";
 import JobAdvertisementCreate from "./JobAdvertisementCreate";
 import Footer from "./Footer";
 
+import JobAdvertisementView from "../components/layouts/JobAdvertisementLayout/JobAdvertisementView";
+
 import { ToastContainer } from "react-toastify"
 
 export default function App() {
   return (
     <Router>
       <div className="App">
-        <ToastContainer position="bottom-left"/>
+        <ToastContainer position="bottom-left" autoClose={3000} closeOnClick pauseOnFocusLoss pauseOnHover draggable/>
         <Navi />
         <Container className="main">
           <Switch>
@@ -30,6 +32,7 @@ export default function App() {
             <Route exact path="/register"> <Register /> </Route>
 
             <Route exact path="/jobAdvertisement/create"> <JobAdvertisementCreate /> </Route>
+            <Route exact path="/jobAdvertisement/:id"> <JobAdvertisementView /> </Route>
           </Switch>
         </Container>
         <Footer/>

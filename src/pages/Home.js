@@ -20,7 +20,7 @@ export default class Home extends Component {
   render() {
     return (
       <>
-        <Grid style={{ marginTop: "40px" }}>
+        <Grid style={{ marginTop: "40px", marginBottom: "25px" }}>
           <Grid.Row>
             <Grid.Column style={{ textAlign: "left" }} width={4}>
               <JobAdvertisementFilter/>

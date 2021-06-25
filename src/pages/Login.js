@@ -5,7 +5,6 @@ import {
   Header,
   Segment,
   Button,
-  FormGroup,
   Message,
 } from "semantic-ui-react";
 
@@ -16,6 +15,7 @@ import { Link } from "react-router-dom";
 import undraw_login from "../assets/images/undraw_login.png";
 
 import HRMSInput from "../utilities/fields/HRMSInput";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const validationSchema = Yup.object().shape({
@@ -29,7 +29,8 @@ export default function Login() {
   };
 
   const onSubmit = (values) => {
-    alert(JSON.stringify(values, null, 2));
+    toast.success("Giriş işlemi başarılı!")
+    //alert(JSON.stringify(values, null, 2));
   };
 
   return (

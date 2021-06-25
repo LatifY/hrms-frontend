@@ -16,6 +16,7 @@ import HRMSInput from "../utilities/fields/HRMSInput";
 import HRMSTextArea from "../utilities/fields/HRMSTextArea";
 
 import * as constantsMethods from "../constants/constantsMethods";
+import { toast } from "react-toastify";
 
 export default function JobAdvertisementCreate() {
   const [positions, setPositions] = useState([]);
@@ -77,8 +78,8 @@ export default function JobAdvertisementCreate() {
   };
 
   const onSubmit = (values) => {
-    console.log(values);
     alert(JSON.stringify(values, null, 2));
+    toast.success("İş ilanı oluşturma işlemi başarılı.")
   };
 
   return (

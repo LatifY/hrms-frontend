@@ -10,7 +10,7 @@ export default function JobAdvertisementItem({ ...props }) {
           <Card.Header>{props.item.employer.companyName}</Card.Header>
           <Card.Meta>{props.item.employer.website}</Card.Meta>
           <Card.Description>
-            {("" + props.item.description).substring(0, 100)}...
+            {("" + props.item.description).substring(0, 250)}...
           </Card.Description>
 
           <List style={{ marginTop: "20px" }} fluid horizontal relaxed>

@@ -6,6 +6,7 @@ import * as Yup from "yup";
 
 import HRMSInput from "../../../utilities/fields/HRMSInput";
 import HRMSPhoneInput from "../../../utilities/fields/HRMSPhoneInput";
+import { toast } from "react-toastify";
 
 export default function EmployerRegister() {
   const validationSchema = Yup.object().shape({
@@ -27,7 +28,8 @@ export default function EmployerRegister() {
   };
 
   const onSubmit = (values) => {
-    alert(JSON.stringify(values, null, 2));
+    toast.success("Kayıt işlemi başarılı!")
+    //alert(JSON.stringify(values, null, 2));
   };
 
   return (

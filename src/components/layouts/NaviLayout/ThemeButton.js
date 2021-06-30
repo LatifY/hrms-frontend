@@ -40,10 +40,10 @@ const darkTheme = () => {
   sessionStorage.setItem("theme", "dark");
 };
 
-if (sessionStorage.getItem("theme") === "dark") {
-  darkTheme();
-} else {
+if (sessionStorage.getItem("theme") === "light") {
   lightTheme();
+} else {
+  darkTheme();
 }
 
 export default function ThemeButton() {

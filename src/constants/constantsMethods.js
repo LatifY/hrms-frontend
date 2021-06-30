@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 export const listToSeparatedText = (array) => {
   var text = "";
   var i;
@@ -17,3 +19,14 @@ export const objectsToOptions = (list, name, value) => {
     value: item[value]
   }));
 };
+
+//export const objectsToTabs = (list, name)
+
+export const displayToast = (success, message) => {
+  if(success){
+    toast.success(message)
+  }
+  else{
+    toast.error(message)
+  }
+}

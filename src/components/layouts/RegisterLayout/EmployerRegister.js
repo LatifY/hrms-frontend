@@ -4,9 +4,12 @@ import { Button, FormGroup } from "semantic-ui-react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
+import EmployerService from "../../../services/employerService";
+
 import HRMSInput from "../../../utilities/fields/HRMSInput";
 import HRMSPhoneInput from "../../../utilities/fields/HRMSPhoneInput";
-import { toast } from "react-toastify";
+
+import * as constantsMethods from "../../../constants/constantsMethods";
 
 export default function EmployerRegister() {
   const validationSchema = Yup.object().shape({
@@ -28,9 +31,17 @@ export default function EmployerRegister() {
   };
 
   const onSubmit = (values) => {
-    toast.success("Kayıt işlemi başarılı!")
-    //alert(JSON.stringify(values, null, 2));
-  };
+    const employerService = new EmployerService();
+
+    employerService
+      .save(values)
+      .then((response) =>
+        constantsMethods.displayToast(
+          response.data.success,
+          response.data.message
+        )
+      );
+  }
 
   return (
     <>

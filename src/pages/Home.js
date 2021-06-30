@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 import {
   Grid,
@@ -9,29 +9,27 @@ import {
   Card,
   Divider,
   Form,
-  Input
+  Input,
 } from "semantic-ui-react";
 
 import "../assets/css/style.css";
 import JobAdvertisementFilter from "../components/layouts/JobAdvertisementLayout/JobAdvertisementFilter";
 import JobAdvertisementList from "../components/layouts/JobAdvertisementLayout/JobAdvertisementList";
 
-export default class Home extends Component {
-  render() {
-    return (
-      <>
-        <Grid style={{ marginTop: "40px", marginBottom: "25px" }}>
-          <Grid.Row>
-            <Grid.Column style={{ textAlign: "left" }} width={4}>
-              <JobAdvertisementFilter/>
-            </Grid.Column>
+export default function Home() {
+  return (
+    <>
+      <Grid style={{ marginTop: "40px", marginBottom: "25px" }}>
+        <Grid.Row>
+          <Grid.Column style={{ textAlign: "left" }} width={4}>
+            <JobAdvertisementFilter />
+          </Grid.Column>
 
-            <Grid.Column style={{ textAlign: "left" }} width={12}>
-              <JobAdvertisementList/>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </>
-    );
-  }
+          <Grid.Column style={{ textAlign: "left" }} width={12}>
+            <JobAdvertisementList />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    </>
+  );
 }

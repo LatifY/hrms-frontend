@@ -1,31 +1,36 @@
-import axios from "axios"
-import * as constants from "../constants/constantsApi"
+import axios from "axios";
+import * as constants from "../constants/constantsApi";
 
-export default class EmployerService{
+export default class EmployerService {
   //get
-  getAll(){
-    return axios.get(constants.EMPLOYERS)
+  getAll() {
+    return axios.get(constants.EMPLOYERS);
   }
 
-  getById(id){
-    return axios.get(`${constants.EMPLOYERS}/${id}`)
+  getById(id) {
+    return axios.get(`${constants.EMPLOYERS}/${id}`);
   }
 
-  getByEmail(email){
-    return axios.get(`${constants.EMPLOYERS}/getByEmail?email=${email}`)
+  getByEmail(email) {
+    return axios.get(`${constants.EMPLOYERS}/getByEmail?email=${email}`);
   }
 
   //post
-  save(values){
-    return axios.post(constants.EMPLOYERS, values)
+  save(values) {
+    return axios.post(constants.EMPLOYERS, values);
+  }
+
+  //put
+  updateById(values) {
+    return axios.put(constants.EMPLOYERS, values);
   }
 
   //delete
-  delete(values){
-    return axios.delete(constants.EMPLOYERS, values)
+  delete(values) {
+    return axios.delete(constants.EMPLOYERS, values);
   }
 
-  deleteById(id){
-    return axios.delete(`${constants.EMPLOYERS}/${id}`)
+  deleteById(id) {
+    return axios.delete(`${constants.EMPLOYERS}/${id}`);
   }
 }

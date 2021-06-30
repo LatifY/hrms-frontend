@@ -24,6 +24,11 @@ export default class EmployeeService{
     return axios.post(constants.EMPLOYEES, values)
   }
 
+  //put
+  updateById(values){
+    return axios.put(constants.EMPLOYEES, values)
+  }
+
   //delete
   delete(values){
     return axios.delete(constants.EMPLOYEES, values)

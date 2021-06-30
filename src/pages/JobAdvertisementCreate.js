@@ -16,9 +16,13 @@ import HRMSInput from "../utilities/fields/HRMSInput";
 import HRMSTextArea from "../utilities/fields/HRMSTextArea";
 
 import * as constantsMethods from "../constants/constantsMethods";
-import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { saveJobAdvertisement } from "../store/actions/jobAdvertisementActions";
 
 export default function JobAdvertisementCreate() {
+  const user = useSelector(state => state.user).user
+  const dispatch = useDispatch()
+
   const [positions, setPositions] = useState([]);
   const [cities, setCities] = useState([]);
   const [workingTimes, setWorkingTimes] = useState([]);
@@ -78,14 +82,13 @@ export default function JobAdvertisementCreate() {
   };
 
   const onSubmit = (values) => {
-    alert(JSON.stringify(values, null, 2));
-    toast.success("İş ilanı oluşturma işlemi başarılı.")
+    values.employerId = user.userId
+    dispatch(saveJobAdvertisement(values))
   };
 
   return (
     <>
       <Grid
-        textAlign="center"
         style={{ height: "80vh" }}
         verticalAlign="middle"
       >
@@ -103,11 +106,13 @@ export default function JobAdvertisementCreate() {
               <Form className="ui form">
                 <FormGroup widths="equal">
                   <HRMSDropdown
+                    label="İş Pozisyonu *"
                     name="positionId"
                     placeholder="İş Pozisyonu *"
                     options={positionOptions}
                   />
                   <HRMSInput
+                    label="Açık Pozisyon Sayısı *"
                     name="openPositionsAmount"
                     placeholder="Açık Pozisyon Sayısı *"
                     icon="briefcase"
@@ -117,11 +122,13 @@ export default function JobAdvertisementCreate() {
 
                 <FormGroup widths="equal">
                   <HRMSDropdown
+                    label="Şehir *"
                     name="cityId"
                     placeholder="Şehir *"
                     options={cityOptions}
                   />
                   <HRMSDropdown
+                    label="Çalışma Şekli *"
                     name="workingTimeId"
                     placeholder="Çalışma Şekli *"
                     options={workingTimeOptions}
@@ -130,6 +137,7 @@ export default function JobAdvertisementCreate() {
 
                 <FormGroup widths="equal">
                   <HRMSInput
+                    label="Min. Maaş"
                     name="minSalary"
                     placeholder="Min. Maaş"
                     icon="money"
@@ -137,6 +145,7 @@ export default function JobAdvertisementCreate() {
                     type="number"
                   />
                   <HRMSInput
+                    label="Maks. Maaş"
                     name="maxSalary"
                     placeholder="Maks. Maaş"
                     icon="money"
@@ -146,6 +155,7 @@ export default function JobAdvertisementCreate() {
                 </FormGroup>
 
                 <HRMSInput
+                  label="Son Başvuru Tarihi *"
                   name="deadline"
                   placeholder="Son Başvuru Tarihi *"
                   icon="calendar alternate"
@@ -154,6 +164,7 @@ export default function JobAdvertisementCreate() {
                 />
 
                 <HRMSTextArea
+                  label="Açıklama *"
                   name="description"
                   placeholder="Açıklama *"
                   icon="file text"
@@ -172,7 +183,7 @@ export default function JobAdvertisementCreate() {
       <img
         src={undraw_jobAdvertisementCreate}
         width="560"
-        style={{ position: "fixed", bottom: 150, right: 10, zIndex: -1 }}
+        style={{ position: "fixed", bottom: 350, right: 10, zIndex: -1 }}
       />
     </>
   );

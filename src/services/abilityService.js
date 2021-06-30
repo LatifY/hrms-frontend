@@ -7,6 +7,10 @@ export default class AbilityService{
     return axios.get(constants.ABILITIES)
   }
 
+  getAllByResumeId(resumeId){
+    return axios.get(`${constants.ABILITIES}/getAllByResumeId?resumeId=${resumeId}`)
+  }
+
   getById(id){
     return axios.get(`${constants.ABILITIES}/${id}`)
   }

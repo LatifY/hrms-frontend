@@ -6,6 +6,10 @@ export default class SchoolService{
   getAll(){
     return axios.get(constants.SCHOOLS)
   }
+  
+  getAllByResumeId(resumeId){
+    return axios.get(`${constants.SCHOOLS}/getAllByResumeId?resumeId=${resumeId}`)
+  }
 
   getById(id){
     return axios.get(`${constants.SCHOOLS}/${id}`)

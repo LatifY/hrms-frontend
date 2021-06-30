@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Container } from "semantic-ui-react";
 import "../assets/css/App.css";
@@ -17,25 +17,40 @@ import JobAdvertisementView from "../components/layouts/JobAdvertisementLayout/J
 
 import { ToastContainer } from "react-toastify"
 
+import Account from "./Account";
+import Profile from "./Profile";
+
 export default function App() {
+
+
   return (
     <Router>
       <div className="App">
-        <ToastContainer position="bottom-left" autoClose={3000} closeOnClick pauseOnFocusLoss pauseOnHover draggable/>
+        <ToastContainer
+          position="top-left"
+          autoClose={2500}
+          closeOnClick
+          pauseOnFocusLoss
+          pauseOnHover
+          draggable
+        />
         <Navi />
         <Container className="main">
           <Switch>
-            <Route exact path="/"> <Home/> </Route>
-            <Route exact path="/home"> <Home /> </Route>
-            <Route exact path="/dashboard"> <Dashboard /> </Route>
-            <Route exact path="/login"> <Login /> </Route>
-            <Route exact path="/register"> <Register /> </Route>
+            <Route exact path="/"><Home /></Route>
+            <Route exact path="/home"><Home /></Route>
+            <Route exact path="/dashboard"><Dashboard /></Route>
+            <Route exact path="/account"><Account /></Route>
+            <Route exact path="/login"><Login /></Route>
+            <Route exact path="/register"><Register /></Route>
 
-            <Route exact path="/jobAdvertisement/create"> <JobAdvertisementCreate /> </Route>
-            <Route exact path="/jobAdvertisement/:id"> <JobAdvertisementView /> </Route>
+            <Route exact path="/jobAdvertisement/create"><JobAdvertisementCreate /></Route>
+            <Route exact path="/jobAdvertisement/:id" component={JobAdvertisementView} />
+
+            <Route exact path="/profile/:userId" component={Profile} />
           </Switch>
         </Container>
-        <Footer/>
+        <Footer />
       </div>
     </Router>
   );

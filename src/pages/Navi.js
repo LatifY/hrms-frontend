@@ -1,124 +1,60 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Button, Container, Menu, Dropdown } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import "../assets/css/style.css";
+import ThemeButton from "../components/layouts/NaviLayout/ThemeButton";
 
-export default class Navi extends Component {
-  state = { activeItem: "anasayfa" };
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+import { useSelector } from "react-redux";
+import { user as initialUser } from "../store/initialValues/user"
 
-  render() {
-    const { activeItem } = this.state;
+import NaviButton from "../components/layouts/NaviLayout/NaviButton";
+import NaviTab from "../components/layouts/NaviLayout/NaviTab";
 
-    return (
-      <>
-        <Link
-          to="/home"
-          style={{ color: "#00b5ad" }}
-          active={activeItem === "anasayfa"}
-          onClick={() => this.setState({ activeItem: "anasayfa" })}
-        >
-          <h1 className="logo" style={{ fontSize: 35, paddingTop: 10 }}>
-            HRMS
-          </h1>
-        </Link>
+import NaviLayout from "../components/layouts/NaviLayout/NaviLayout"
+import NoUserNaviLayout from "../components/layouts/NaviLayout/NoUserNaviLayout";
 
-        <Menu
-          size="large"
-          secondary
-          pointing
-          color="teal"
-          style={{ height: 0 }}
-        >
-          <Container>
-            <Menu.Item
-              active
-              as={Link}
-              link="true"
-              to="/home"
-              name="anasayfa"
-              active={activeItem === "anasayfa"}
-              onClick={this.handleItemClick}
-            />
-            <Menu.Item
-              active
-              as={Link}
-              link="true"
-              to="/jobAdvertisements"
-              name="ilan"
-              active={activeItem === "ilan"}
-              onClick={this.handleItemClick}
-            >
-              İş İlanları
-            </Menu.Item>
-            <Menu.Item
-              active
-              as={Link}
-              link="true"
-              to="/resumees"
-              name="cv"
-              active={activeItem === "cv"}
-              onClick={this.handleItemClick}
-            >
-              CV'ler
-            </Menu.Item>
-            <Menu.Item
-              as={Link}
-              link="true"
-              name="panel"
-              to="/dashboard"
-              active={activeItem === "panel"}
-              onClick={this.handleItemClick}
-            />
-            <Menu.Item position="right">
-              <Button
-                color="black"
-                as={Link}
-                to="/jobAdvertisement/create"
-                name="jobAdvertisementCreate"
-                link="true"
-                active={activeItem === "jobAdvertisementCreate"}
-                onClick={this.handleItemClick}
-                style={{ marginLeft: "1em" }}
-              >
-                İş İlanı Oluştur
-              </Button>
-              <Button
-                color="teal"
-                as={Link}
-                to="/login"
-                name="login"
-                link="true"
-                active={activeItem === "login"}
-                onClick={this.handleItemClick}
-                style={{ marginLeft: "1em" }}
-              >
-                Giriş yap
-              </Button>
-              <Button
-                color="teal"
-                as={Link}
-                to="/register"
-                name="register"
-                link="true"
-                active={activeItem === "register"}
-                onClick={this.handleItemClick}
-                style={{ marginLeft: "1em" }}
-              >
-                Kayıt ol
-              </Button>
-            </Menu.Item>
-          </Container>
-        </Menu>
-      </>
-    );
-  }
+export default function Navi() {
+  const [activeItem, setActiveItem] = useState("home");
+  const handleItemClick = (e, { name }) => setActiveItem(name || "home");
+  const user = useSelector((state) => state.user);
+
+  return (
+    <>
+      <Link
+        style={{ color: "#00b5ad" }}
+        to="/home"
+        name="home"
+        active={activeItem === "home"}
+        onClick={() => setActiveItem("home")}
+      >
+        <h1 className="logo" style={{ fontSize: 35, paddingTop: 10 }}>
+          HRMS
+        </h1>
+      </Link>
+
+      <Menu color="teal" size="large" secondary pointing stackable>
+        <Container>
+          <NaviTab
+            name="home"
+            text="Anasayfa"
+            to="/home"
+            onClick={handleItemClick}
+            activeItem={activeItem}
+          />
+          <NaviTab
+            name="dashboard"
+            text="Panel"
+            to="/dashboard"
+            onClick={handleItemClick}
+            activeItem={activeItem}
+          />
+
+          <Menu.Item position="right">
+            {user.user === initialUser  ? <NoUserNaviLayout/> : <NaviLayout user={ user.user }/>}
+            <ThemeButton />
+          </Menu.Item>
+        </Container>
+      </Menu>
+    </>
+  );
 }
-
-/*              <Dropdown text="Controllers">
-                <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to></Dropdown.Item>
-                  <Dropdown.Item>Russian</Dropdown.Item>
-                  <Dropdown.Item>Spanish</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>*/

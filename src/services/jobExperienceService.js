@@ -7,6 +7,10 @@ export default class JobExperienceService{
     return axios.get(constants.JOB_EXPERIENCES)
   }
 
+  getAllByResumeId(resumeId){
+    return axios.get(`${constants.JOB_EXPERIENCES}/getAllByResumeId?resumeId=${resumeId}`)
+  }
+
   getById(id){
     return axios.get(`${constants.JOB_EXPERIENCES}/${id}`)
   }

@@ -15,9 +15,17 @@ export default class UserService{
     return axios.get(`${constants.USERS}/getByEmail?email=${email}`)
   }
 
+  getUserTypeByEmail(email){
+    return axios.get(`${constants.USERS}/getUserTypeByEmail?email=${email}`)
+  }
+
   //post
   save(values){
     return axios.post(constants.USERS, values)
+  }
+
+  login(values){
+    return axios.post((constants.USERS + "/login"), values)
   }
 
   //put

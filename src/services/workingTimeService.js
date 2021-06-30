@@ -11,6 +11,10 @@ export default class WorkingTimeService{
     return axios.get(`${constants.WORKING_TIMES}/${id}`)
   }
 
+  getByWorkingTimeName(workingTimeName){
+    return axios.get(`${constants.WORKING_TIMES}/getByWorkingTimeName?workingTimeName=${workingTimeName}`)
+  }
+
   //post
   save(values){
     return axios.post(constants.WORKING_TIMES, values)

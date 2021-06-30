@@ -7,6 +7,10 @@ export default class ImageService{
     return axios.get(constants.IMAGES)
   }
 
+  getAllByResumeId(resumeId){
+    return axios.get(`${constants.IMAGES}/getAllByResumeId?resumeId=${resumeId}`)
+  }
+
   getById(id){
     return axios.get(`${constants.IMAGES}/${id}`)
   }

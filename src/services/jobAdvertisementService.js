@@ -10,7 +10,16 @@ export default class JobAdvertisementService{
     return axios.get(constants.JOB_ADVERTISEMENTS)
   }
 
+  getAllByEmployerId(employerId){
+    return axios.get(`${constants.JOB_ADVERTISEMENTS}/getAllByEmployerId?employerId=${employerId}`)
+  }
+
+  getAllByEmployerIdOrderByReleaseDate(employerId){
+    return axios.get(`${constants.JOB_ADVERTISEMENTS}/getAllByEmployerIdOrderByReleaseDate?employerId=${employerId}`)
+  }
+
   getById(id){
+    console.log(`${constants.JOB_ADVERTISEMENTS}/${id}`)
     return axios.get(`${constants.JOB_ADVERTISEMENTS}/${id}`)
   }
 
@@ -34,9 +43,18 @@ export default class JobAdvertisementService{
     return axios.get(`${constants.JOB_ADVERTISEMENTS}/getByActiveTrueOrderByReleaseDate`)
   }
 
+  getByActiveTrueAndEmployerIdOrderByReleaseDate(employerId){
+    return axios.get(`${constants.JOB_ADVERTISEMENTS}/getByActiveTrueAndEmployerIdOrderByReleaseDate?employerId=${employerId}`)
+  }
+
   //post
   save(values){
     return axios.post(constants.JOB_ADVERTISEMENTS, values)
+  }
+
+  //put
+  updateById(values){
+    return axios.put(constants.JOB_ADVERTISEMENTS, values)
   }
 
   //update

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import {
   Grid,
@@ -11,26 +11,40 @@ import {
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import { Link, useHistory } from "react-router-dom";
 import undraw_login from "../assets/images/undraw_login.png";
 
 import HRMSInput from "../utilities/fields/HRMSInput";
-import { toast } from "react-toastify";
+import { login } from "../store/actions/userActions";
+
 
 export default function Login() {
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.user)
+  const history = useHistory()
   const validationSchema = Yup.object().shape({
     email: Yup.string().email().required().min(1).max(100),
     password: Yup.string().required().min(1).max(100),
   });
 
+  const pushToHome = () => {
+    history.push("/")
+  }
+
   const initialValues = {
-    email: undefined,
-    password: undefined,
+    email: "hello@lativegames.com",
+    password: "lative123",
   };
 
   const onSubmit = (values) => {
-    toast.success("Giriş işlemi başarılı!")
-    //alert(JSON.stringify(values, null, 2));
+    dispatch(login(values))
+    setTimeout(() => {
+      if(JSON.stringify(user.user) !== {}){
+        pushToHome()
+      }
+     }, 1);
   };
 
   return (
@@ -75,7 +89,7 @@ export default function Login() {
           </Segment>
           <Message>
             <h4>
-              Hesabınız yok mu?{" "}
+              Hesabınız yok mu?
               <Link style={{ color: "#00b5ad" }} to="/register">
                 Kayıt olun!
               </Link>
@@ -86,7 +100,7 @@ export default function Login() {
       <img
         src={undraw_login}
         width="560"
-        style={{ position: "fixed", bottom: 150, right: 10, zIndex: -1 }}
+        style={{ position: "fixed", bottom: 350, right: 10, zIndex: -1 }}
       />
     </>
   );

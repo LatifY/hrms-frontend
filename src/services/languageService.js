@@ -7,6 +7,10 @@ export default class LanguageService{
     return axios.get(constants.LANGUAGES)
   }
 
+  getAllByResumeId(resumeId){
+    return axios.get(`${constants.LANGUAGES}/getAllByResumeId?resumeId=${resumeId}`)
+  }
+
   getById(id){
     return axios.get(`${constants.LANGUAGES}/${id}`)
   }

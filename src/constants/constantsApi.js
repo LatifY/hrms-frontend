@@ -1,4 +1,4 @@
-export const ROOT_URL = "http://localhost:8080/"
+export const ROOT_URL = "https://api-url.com"
 export const API_URL = ROOT_URL + "api/"
 
 export const USERS = API_URL + "users"

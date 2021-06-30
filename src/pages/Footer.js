@@ -16,6 +16,7 @@ export default function Footer() {
   return (
     <>
       <Segment
+        className="no-theme"
         inverted
         vertical
         style={{
@@ -30,19 +31,38 @@ export default function Footer() {
             <Grid.Column width={3}>
               <Header inverted as="h4" content="Linkler" />
               <List link inverted>
-                <List.Item as={Link} to="/">Anasayfa</List.Item>
-                <List.Item as={Link} to="/dashboard">Panel</List.Item>
-                <List.Item as={Link} to="/login">Giriş Yap</List.Item>
-                <List.Item as={Link} to="/register">Kayıt Ol</List.Item>
+                <List.Item as={Link} to="/">
+                  Anasayfa
+                </List.Item>
+                <List.Item as={Link} to="/dashboard">
+                  Panel
+                </List.Item>
+                <List.Item as={Link} to="/login">
+                  Giriş Yap
+                </List.Item>
+                <List.Item as={Link} to="/register">
+                  Kayıt Ol
+                </List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={3}>
               <Header inverted as="h4" content="Referanslar" />
               <List link inverted>
-                <List.Item as="a" href="https://latifyilmaz.com">Latif Yılmaz</List.Item>
-                <List.Item as="a" href="https://www.kodlama.io">kodlama.io</List.Item>
-                <List.Item as="a" href="https://github.com/LatifY/hrms-frontend">Front-End Github</List.Item>
-                <List.Item as="a" href="https://github.com/LatifY/HRMS">Back-End Github</List.Item>
+                <List.Item as="a" href="https://latifyilmaz.com">
+                  Latif Yılmaz
+                </List.Item>
+                <List.Item as="a" href="https://www.kodlama.io">
+                  kodlama.io
+                </List.Item>
+                <List.Item
+                  as="a"
+                  href="https://github.com/LatifY/hrms-frontend"
+                >
+                  Front-End Github
+                </List.Item>
+                <List.Item as="a" href="https://github.com/LatifY/HRMS">
+                  Back-End Github
+                </List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={7}>
@@ -57,12 +77,13 @@ export default function Footer() {
                 >
                   Latif Yılmaz
                 </a>{" "}
-                tarafından{" "}
+                tarafından
                 <a
                   className="blue-text"
                   target="_blank"
                   href="https://www.kodlama.io"
                 >
+                  {" "}
                   kodlama.io
                 </a>{" "}
                 yardımıyla yapılmıştır.

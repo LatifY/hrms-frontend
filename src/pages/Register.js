@@ -39,7 +39,7 @@ export default function Register() {
           </Segment>
           <Message>
             <h4>
-              Hesabınız zaten var mı?{" "}
+              Hesabınız zaten var mı?
               <Link style={{ color: "#00b5ad" }} to="/login">
                 Giriş yapın!
               </Link>
@@ -50,7 +50,7 @@ export default function Register() {
       <img
         src={undraw_register}
         width="560"
-        style={{ position: "fixed", bottom: 150, right: 10, zIndex: -1 }}
+        style={{ position: "fixed", bottom: 350, right: 10, zIndex: -1 }}
       />
     </>
   );

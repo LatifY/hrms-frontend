@@ -10,6 +10,10 @@ export default class PositionService{
   getById(id){
     return axios.get(`${constants.POSITIONS}/${id}`)
   }
+  
+  getByPositionName(positionName){
+    return axios.get(`${constants.POSITIONS}/getByPositionName?positionName=${positionName}`)
+  }
 
   //post
   save(values){

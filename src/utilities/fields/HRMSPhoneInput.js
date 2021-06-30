@@ -13,7 +13,6 @@ export default function HRMSPhoneInput({ ...props }) {
     let match = cleaned.match(/^(\d{3})(\d{3})(\d{2})(\d{2})$/);
 
     if (match) {
-      console.log([match[1], " ", match[2], " ", match[3], " ", match[4]].join("").trim())
       return (
         [match[1], " ", match[2], " ", match[3], " ", match[4]].join("").trim()
       );

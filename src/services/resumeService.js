@@ -20,6 +20,11 @@ export default class ResumeService{
     return axios.post(constants.RESUMEES, values)
   }
 
+  //put
+  updateById(values){
+    return axios.put(constants.RESUMEES, values)
+  }
+
   //delete
   delete(values){
     return axios.delete(constants.RESUMEES, values)

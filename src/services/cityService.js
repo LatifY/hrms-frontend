@@ -11,6 +11,10 @@ export default class CityService{
     return axios.get(`${constants.CITIES}/${id}`)
   }
 
+  getByCityName(cityName){
+    return axios.get(`${constants.CITIES}/getByCityName?cityName=${cityName}`)
+  }
+
   //post
   save(values){
     return axios.post(constants.CITIES, values)

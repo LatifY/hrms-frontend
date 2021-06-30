@@ -20,6 +20,8 @@ import { ToastContainer } from "react-toastify"
 import Account from "./Account";
 import Profile from "./Profile";
 
+document.body.style.zoom = "75%"
+
 export default function App() {
 
 

@@ -34,8 +34,8 @@ export default function Login() {
   }
 
   const initialValues = {
-    email: "hello@lativegames.com",
-    password: "lative123",
+    email: undefined,
+    password: undefined,
   };
 
   const onSubmit = (values) => {

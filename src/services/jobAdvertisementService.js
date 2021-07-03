@@ -10,16 +10,23 @@ export default class JobAdvertisementService{
     return axios.get(constants.JOB_ADVERTISEMENTS)
   }
 
+  getByFilter(pageNo, pageSize, values){
+    return axios.post(`${constants.JOB_ADVERTISEMENTS}/getByFilter?pageNo=${pageNo}&pageSize=${pageSize}`, values)
+  }
+
   getAllByEmployerId(employerId){
     return axios.get(`${constants.JOB_ADVERTISEMENTS}/getAllByEmployerId?employerId=${employerId}`)
   }
 
-  getAllByEmployerIdOrderByReleaseDate(employerId){
-    return axios.get(`${constants.JOB_ADVERTISEMENTS}/getAllByEmployerIdOrderByReleaseDate?employerId=${employerId}`)
+  getAllByEmployerIdOrderByReleaseDateAsc(employerId){
+    return axios.get(`${constants.JOB_ADVERTISEMENTS}/getAllByEmployerIdOrderByReleaseDateAsc?employerId=${employerId}`)
+  }
+
+  getAllByEmployerIdOrderByReleaseDateDesc(employerId){
+    return axios.get(`${constants.JOB_ADVERTISEMENTS}/getAllByEmployerIdOrderByReleaseDateDesc?employerId=${employerId}`)
   }
 
   getById(id){
-    console.log(`${constants.JOB_ADVERTISEMENTS}/${id}`)
     return axios.get(`${constants.JOB_ADVERTISEMENTS}/${id}`)
   }
 
@@ -41,6 +48,18 @@ export default class JobAdvertisementService{
 
   getByActiveTrueOrderByReleaseDate(){
     return axios.get(`${constants.JOB_ADVERTISEMENTS}/getByActiveTrueOrderByReleaseDate`)
+  }
+
+  getByActiveTrueAndConfirmedTrueOrderByReleaseDateAsc(){
+    return axios.get(`${constants.JOB_ADVERTISEMENTS}/getByActiveTrueAndConfirmedTrueOrderByReleaseDateAsc`)
+  }
+
+  getByActiveTrueAndConfirmedTrueOrderByReleaseDateDesc(){
+    return axios.get(`${constants.JOB_ADVERTISEMENTS}/getByActiveTrueAndConfirmedTrueOrderByReleaseDateDesc`)
+  }
+
+  getByActiveTrueAndEmployerId(employerId){
+    return axios.get(`${constants.JOB_ADVERTISEMENTS}/getByActiveTrueAndEmployerId?employerId=${employerId}`)
   }
 
   getByActiveTrueAndEmployerIdOrderByReleaseDate(employerId){

@@ -5,30 +5,27 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import HRMSInput from "../../../utilities/fields/HRMSInput";
-import HRMSPhoneInput from "../../../utilities/fields/HRMSPhoneInput";
 
 import { useDispatch } from "react-redux";
-import { updateEmployer } from "../../../store/actions/userActions";
+import { updatePersonnel } from "../../../store/actions/userActions";
 
 export default function EmployerAccountDetails(props) {
   const user = props.user;
   const dispatch = useDispatch();
 
   const validationSchema = Yup.object().shape({
-    companyName: Yup.string().required().min(1).max(100),
-    phone: Yup.string().required().min(10).max(13),
-    website: Yup.string().required().min(1).max(100),
+    firstName: Yup.string().required().min(1).max(25),
+    lastName: Yup.string().required().min(1).max(20),
   });
 
   const initialValues = {
-    companyName: user.companyName,
-    phone: user.phone,
-    website: user.website,
+    firstName: user.firstName,
+    lastName: user.lastName,
   };
 
   const onSubmit = (values) => {
     values.userId = user.userId;
-    dispatch(updateEmployer(values));
+    dispatch(updatePersonnel(values));
   };
 
   return (
@@ -39,27 +36,20 @@ export default function EmployerAccountDetails(props) {
         onSubmit={onSubmit}
       >
         <Form className="ui form">
-          <HRMSInput
-            name="companyName"
-            label="Şirket Adı"
-            placeholder="Şirket Adı"
-            icon="building"
-            iconPosition="left"
-          />
           <FormGroup widths="equal">
             <HRMSInput
-              name="website"
-              label="Website"
-              placeholder="Website"
-              icon="world"
+              name="firstName"
+              label="Ad"
+              placeholder="Ad"
+              icon="user"
               iconPosition="left"
             />
 
-            <HRMSPhoneInput
-              name="phone"
-              label="Telefon No"
-              placeholder="Telefon No"
-              icon="phone"
+            <HRMSInput
+              name="lastName"
+              label="Soyad"
+              placeholder="Soyad"
+              icon="user"
               iconPosition="left"
             />
           </FormGroup>

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react'
 import DataTable from "../layouts/DataTableLayout/DataTable"
 import PositionService from "../../services/positionService";
 
+import ListLoader from '../ListLoader';
+
+
 export default function PositionController() {
   const [positions, setPositions] = useState([]);
 
@@ -28,6 +31,8 @@ export default function PositionController() {
         cells.push(cell)
       })}
       <DataTable headerCells={headerCells} cells={cells} />
+
+      <ListLoader list={positions}/>
     </>
   );
 }

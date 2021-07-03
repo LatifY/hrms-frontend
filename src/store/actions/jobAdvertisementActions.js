@@ -12,7 +12,7 @@ const jobAdvertisementService = new JobAdvertisementService();
 //JobAdvertisement
 export const getAllJobAdvertisements = (employerId) => async (dispatch) => {
   await jobAdvertisementService
-    .getAllByEmployerIdOrderByReleaseDate(employerId)
+    .getAllByEmployerIdOrderByReleaseDateAsc(employerId)
     .then((response) =>
       dispatch({
         type: types.GET_ALL_JOB_ADVERTISEMENTS,

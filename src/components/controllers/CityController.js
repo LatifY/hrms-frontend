@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import DataTable from "../layouts/DataTableLayout/DataTable"
 import CityService from "../../services/cityService";
 
+import ListLoader from '../ListLoader';
+
 export default function CityController() {
   const [cities, setCities] = useState([]);
 
@@ -28,6 +30,8 @@ export default function CityController() {
         cells.push(cell)
       })}
       <DataTable headerCells={headerCells} cells={cells} />
+
+      <ListLoader list={cities}/>
     </>
   );
 }

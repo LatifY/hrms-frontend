@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Button, List, Image, FormGroup } from "semantic-ui-react";
+import React, { useEffect } from "react";
+import { Button, List, Image } from "semantic-ui-react";
 
 import { Formik, Form } from "formik";
 

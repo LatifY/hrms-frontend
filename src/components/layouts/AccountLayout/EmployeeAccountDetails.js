@@ -4,7 +4,6 @@ import { Button, FormGroup } from "semantic-ui-react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
-import EmployeeService from "../../../services/employeeService";
 import PositionService from "../../../services/positionService";
 
 import HRMSDropdown from "../../../utilities/fields/HRMSDropdown";

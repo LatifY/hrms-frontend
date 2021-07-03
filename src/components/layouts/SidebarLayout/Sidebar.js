@@ -4,7 +4,6 @@ import { Menu, Container } from "semantic-ui-react";
 import SidebarTab from "./SidebarTab";
 
 export default function Sidebar(props) {
-  console.log(props.options[0].name)
   const [activeItem, setActiveItem] = useState(props.options[0].name);
   const handleItemClick = (e, { name, component }) => {
     setActiveItem(name || props.options[0].name);

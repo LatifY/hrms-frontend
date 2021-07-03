@@ -7,8 +7,11 @@ import Sidebar from "../components/layouts/SidebarLayout/Sidebar";
 import EmployeeAccountDetails from "../components/layouts/AccountLayout/EmployeeAccountDetails";
 import EmployeeResume from "../components/layouts/AccountLayout/EmployeeResume";
 
+import PersonnelAccountDetails from "../components/layouts/AccountLayout/PersonnelAccountDetails";
+
 import EmployerAccountDetails from "../components/layouts/AccountLayout/EmployerAccountDetails";
 import EmployerJobAdvertisements from "../components/layouts/AccountLayout/EmployerJobAdvertisements";
+
 export default function Account() {
   const user = useSelector((state) => state.user);
 
@@ -43,6 +46,16 @@ export default function Account() {
         }
       ],
     },
+    {
+      userType: "personnel",
+      content: [
+        {
+          name:"accountDetails",
+          text:"Hesap Ayrıntıları",
+          component: <PersonnelAccountDetails user={user.user}  />
+        }
+      ]
+    }
   ];
 
   const option = options.filter((o) => o.userType == user.user.user.userType)[0]

@@ -1,8 +1,5 @@
 import React from "react";
 import { MenuItem, Dropdown, Image, Icon } from "semantic-ui-react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router";
-import { logout } from "../../../store/actions/userActions";
 import { Link } from "react-router-dom";
 
 

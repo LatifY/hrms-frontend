@@ -34,8 +34,8 @@ export default function Login() {
   }
 
   const initialValues = {
-    email: undefined,
-    password: undefined,
+    email: "engindemirog@hrms.net",
+    password: "12345",
   };
 
   const onSubmit = (values) => {

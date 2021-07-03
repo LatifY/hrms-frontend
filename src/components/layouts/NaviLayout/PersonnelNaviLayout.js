@@ -1,9 +1,19 @@
-import React from 'react'
+import React from "react";
+import LogoutButton from "./LogoutButton";
 
-export default function PersonnelNaviLayout() {
+import NaviProfile from "./NaviProfile";
+
+export default function PersonnelNaviLayout(props) {
+  const user = props.user
+
+  const options = [
+    { to: "/account", text: "Hesap", icon: "cog" },
+    { to: "/dashboard", text: "Panel", icon: "pen square" },
+  ]
   return (
-    <div>
-      
-    </div>
-  )
+    <>
+      <NaviProfile name={user.firstName + " " + user.lastName} options={options} />
+      <LogoutButton />
+    </>
+  );
 }

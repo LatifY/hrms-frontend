@@ -1,32 +1,31 @@
-import React, { useState } from "react";
-import { Button, Container, Menu, Dropdown } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Container, Menu } from "semantic-ui-react";
+import { Link, useHistory } from "react-router-dom";
 import "../assets/css/style.css";
 import ThemeButton from "../components/layouts/NaviLayout/ThemeButton";
 
 import { useSelector } from "react-redux";
-import { user as initialUser } from "../store/initialValues/user"
+import { user as initialUser } from "../store/initialValues/user";
 
-import NaviButton from "../components/layouts/NaviLayout/NaviButton";
 import NaviTab from "../components/layouts/NaviLayout/NaviTab";
 
-import NaviLayout from "../components/layouts/NaviLayout/NaviLayout"
+import NaviLayout from "../components/layouts/NaviLayout/NaviLayout";
 import NoUserNaviLayout from "../components/layouts/NaviLayout/NoUserNaviLayout";
 
 export default function Navi() {
-  const [activeItem, setActiveItem] = useState("home");
-  const handleItemClick = (e, { name }) => setActiveItem(name || "home");
+  let history = useHistory()  
   const user = useSelector((state) => state.user);
+  const [url, setUrl] = useState(window.location.pathname);
+
+  useEffect(() => {
+    history.listen((location, action) => {
+      setUrl(location.pathname)
+    });
+  }, []);
 
   return (
     <>
-      <Link
-        style={{ color: "#00b5ad" }}
-        to="/home"
-        name="home"
-        active={activeItem === "home"}
-        onClick={() => setActiveItem("home")}
-      >
+      <Link style={{ color: "#00b5ad" }} to="/home">
         <h1 className="logo" style={{ fontSize: 35, paddingTop: 10 }}>
           HRMS
         </h1>
@@ -35,22 +34,17 @@ export default function Navi() {
       <Menu color="teal" size="large" secondary pointing stackable>
         <Container>
           <NaviTab
-            name="home"
             text="Anasayfa"
             to="/home"
-            onClick={handleItemClick}
-            activeItem={activeItem}
-          />
-          <NaviTab
-            name="dashboard"
-            text="Panel"
-            to="/dashboard"
-            onClick={handleItemClick}
-            activeItem={activeItem}
+            active={url === "/home" || url === "/"}
           />
 
           <Menu.Item position="right">
-            {user.user === initialUser  ? <NoUserNaviLayout/> : <NaviLayout user={ user.user }/>}
+            {user.user === initialUser ? (
+              <NoUserNaviLayout />
+            ) : (
+              <NaviLayout user={user.user} />
+            )}
             <ThemeButton />
           </Menu.Item>
         </Container>

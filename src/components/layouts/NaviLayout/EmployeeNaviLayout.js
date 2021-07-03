@@ -1,7 +1,6 @@
 import React from "react";
 import LogoutButton from "./LogoutButton";
 
-import NaviButton from "./NaviButton";
 import NaviProfile from "./NaviProfile";
 
 export default function EmployeeNaviLayout(props) {
@@ -9,7 +8,7 @@ export default function EmployeeNaviLayout(props) {
 
   const options = [
     { to: "/account", text: "Hesap", icon: "cog" },
-    { to: `/employee/${props.user.userId}`, text: "Profil", icon: "user" },
+    { to: `/profile/${props.user.userId}`, text: "Profil", icon: "user" },
     { to: "/resume", text: "Özgeçmiş", icon: "newspaper" },
   ]
   return (

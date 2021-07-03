@@ -9,7 +9,6 @@ export default function NoResumeError(props) {
   const createResume = () => {
     const emptyResume = { description: "", githubUrl: "", linkedinUrl: "", employeeId: props.user.userId}
     dispatch(saveResume(emptyResume))
-    window.location.reload()
   }
   return (
     <>

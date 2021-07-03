@@ -16,6 +16,11 @@ export default class PersonnelService{
     return axios.post(constants.PERSONNELS, values)
   }
 
+  //put
+  updateById(values){
+    return axios.put(constants.PERSONNELS, values)
+  }
+
   //delete
   delete(values){
     return axios.delete(constants.PERSONNELS, values)

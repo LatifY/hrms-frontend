@@ -6,8 +6,6 @@ import {
   List,
   Header,
   Divider,
-  Image,
-  Card,
 } from "semantic-ui-react";
 
 import { Link } from "react-router-dom";

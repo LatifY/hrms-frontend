@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, FormGroup, Divider, Radio } from "semantic-ui-react";
+import { Button, FormGroup, Divider, Icon } from "semantic-ui-react";
 
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -14,10 +14,12 @@ import HRMSRadio from "../../../utilities/fields/HRMSRadio";
 import HRMSTextArea from "../../../utilities/fields/HRMSTextArea";
 
 import * as constantsMethods from "../../../constants/constantsMethods";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import { updateJobAdvertisement, deleteJobAdvertisement } from "../../../store/actions/jobAdvertisementActions";
-import { Link } from "react-router-dom";
+import {
+  updateJobAdvertisement,
+  deleteJobAdvertisement,
+} from "../../../store/actions/jobAdvertisementActions";
 
 export default function EmployerJobAdvertisement(props) {
   const jobAdvertisement = props.jobAdvertisement;
@@ -88,11 +90,14 @@ export default function EmployerJobAdvertisement(props) {
     dispatch(updateJobAdvertisement(values));
   };
 
-  const onChange = (value) => {};
-
   return (
     <>
-      <h2>{`İş İlanı #${props.index + 1}`}</h2>
+      <div className="header" style={{ display: "flex", width: "100%" }}>
+        <h2>{`İş İlanı #${props.index + 1}`}</h2>
+        
+          {jobAdvertisement.confirmed ?  <h4 style={{ marginLeft:"auto" }}> Onaylı <Icon name="check circle" /> </h4> : null}
+        
+      </div>
 
       <Formik
         initialValues={initialValues}
@@ -176,8 +181,14 @@ export default function EmployerJobAdvertisement(props) {
         </Form>
       </Formik>
 
-      <Button onClick={() => dispatch(deleteJobAdvertisement(jobAdvertisement.id))} style={{ marginTop:"15px3" }} color="red" fluid size="large">
-          Sil
+      <Button
+        onClick={() => dispatch(deleteJobAdvertisement(jobAdvertisement.id))}
+        style={{ marginTop: "15px" }}
+        color="red"
+        fluid
+        size="large"
+      >
+        Sil
       </Button>
       <Divider clearing />
     </>

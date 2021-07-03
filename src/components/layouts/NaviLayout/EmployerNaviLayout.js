@@ -8,7 +8,7 @@ export default function EmployerNaviLayout(props) {
 
   const options = [
     { to: "/account", text: "Hesap", icon: "cog" },
-    { to: `/employer/${props.user.userId}`, text: "Profil", icon: "user" },
+    { to: `/profile/${props.user.userId}`, text: "Profil", icon: "user" },
     { to: "/jobAdvertisement/create", text: "İş İlanı Oluştur", icon: "plus" },
   ]
   return (

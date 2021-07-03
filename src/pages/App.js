@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Container } from "semantic-ui-react";
 import "../assets/css/App.css";
@@ -29,6 +29,7 @@ export default function App() {
     <Router>
       <div className="App">
         <ToastContainer
+        style={{ position:"fixed" }}
           position="top-left"
           autoClose={2500}
           closeOnClick

@@ -1,6 +1,7 @@
 import UserService from "../../services/userService";
 import EmployeeService from "../../services/employeeService";
 import EmployerService from "../../services/employerService";
+import PersonnelService from "../../services/personnelService";
 
 import * as constantsMethods from "../../constants/constantsMethods";
 
@@ -12,6 +13,7 @@ export const types = {
 const userService = new UserService();
 const employeeService = new EmployeeService();
 const employerService = new EmployerService();
+const personnelService = new PersonnelService();
 
 export function addUser(user){
   return { type: types.ADD_USER, payload:user }
@@ -23,6 +25,10 @@ export const getEmployee = (id) => async (dispatch) => {
 
 export const getEmployer = (id) => async (dispatch) => {
   await employerService.getById(id).then((response) => dispatch(addUser(response.data.data)))
+}
+
+export const getPersonnel = (id) => async (dispatch) => {
+  await personnelService.getById(id).then((response) => dispatch(addUser(response.data.data)))
 }
 
 export const login = (values) => async (dispatch) => {
@@ -55,6 +61,15 @@ export const updateEmployer = (values) => async dispatch => {
     constantsMethods.displayToast(response.data.success, response.data.message);
     if (response.data.success) {
       dispatch(getEmployer(values.userId));
+    }
+  })
+}
+
+export const updatePersonnel = (values) => async dispatch => {
+  await personnelService.updateById(values).then((response) => {
+    constantsMethods.displayToast(response.data.success, response.data.message);
+    if (response.data.success) {
+      dispatch(getPersonnel(values.userId));
     }
   })
 }

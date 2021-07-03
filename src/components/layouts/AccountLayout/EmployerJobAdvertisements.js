@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { Tab } from "semantic-ui-react";
+import React, { useEffect } from "react";
 
 import NoJobAdvertisementsError from "./NoJobAdvertisementsError";
 

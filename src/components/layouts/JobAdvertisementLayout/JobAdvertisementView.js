@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
 
-import { Card, Button, List, Icon, Grid } from "semantic-ui-react";
+
+import { Grid } from "semantic-ui-react";
 
 import JobAdvertisementService from "../../../services/jobAdvertisementService";
 import JobAdvertisementViewProfile from "./JobAdvertisementViewProfile";

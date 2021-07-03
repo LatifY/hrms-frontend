@@ -1,6 +1,6 @@
 import { useField } from "formik";
 import React from "react";
-import { FormField, Radio, Select } from "semantic-ui-react";
+import { FormField, Radio } from "semantic-ui-react";
 
 export default function HRMSRadio({ ...props }) {
   const [field, meta, helpers] = useField(props);

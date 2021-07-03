@@ -8,7 +8,6 @@ export default function NaviTab(props) {
     <MenuItem
       as={Link}
       link="true"
-      active = {props.activeItem === props.name}
       {...props}
     >
       {props.text}

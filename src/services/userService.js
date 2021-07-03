@@ -29,12 +29,12 @@ export default class UserService{
   }
 
   //put
-  verifyByEmail(email){
-    return axios.put(`${constants.USERS}/verifyByEmail?email=${email}`)
+  updateVerifiedById(verified, id){
+    return axios.put(`${constants.USERS}/updateVerifiedById?verified=${verified}&id=${id}`)
   }
 
-  verifyById(id){
-    return axios.put(`${constants.USERS}/verifyById?id=${id}`)
+  updateVerifiedByEmail(verified, email){
+    return axios.put(`${constants.USERS}/updateVerifiedByEmail?verified=${verified}&email=${email}`)
   }
 
   //delete

@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Button, FormGroup } from "semantic-ui-react";
 
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
-import ResumeService from "../../../services/resumeService";
-
-import HRMSDropdown from "../../../utilities/fields/HRMSDropdown";
 import HRMSInput from "../../../utilities/fields/HRMSInput";
 
 import HRMSTextArea from "../../../utilities/fields/HRMSTextArea";

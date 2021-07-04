@@ -22,9 +22,6 @@ import Profile from "./Profile";
 
 //document.body.style.zoom = "75%"
 
-require('dotenv').config()
-console.log(process.env)
-
 export default function App() {
 
 

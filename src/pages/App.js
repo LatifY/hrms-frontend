@@ -42,7 +42,7 @@ export default function App() {
           <Switch>
             <Route exact path="/"><Home /></Route>
             <Route exact path="/home"><Home /></Route>
-            <Route exact path="/dashboard"><Dashboard /></Route>
+            {/* <Route exact path="/dashboard"><Dashboard /></Route> */}
             <Route exact path="/account"><Account /></Route>
             <Route exact path="/login"><Login /></Route>
             <Route exact path="/register"><Register /></Route>

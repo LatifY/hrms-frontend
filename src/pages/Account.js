@@ -5,6 +5,7 @@ import { Grid, Segment } from "semantic-ui-react";
 import Sidebar from "../components/layouts/SidebarLayout/Sidebar";
 
 import EmployeeAccountDetails from "../components/layouts/AccountLayout/EmployeeAccountDetails";
+import EmployeeAccountChangePassword from "../components/layouts/AccountLayout/EmployeeAccountChangePassword";
 import EmployeeResume from "../components/layouts/AccountLayout/EmployeeResume";
 
 import PersonnelAccountDetails from "../components/layouts/AccountLayout/PersonnelAccountDetails";
@@ -23,6 +24,11 @@ export default function Account() {
           name: "accountDetails",
           text: "Hesap Ayrıntıları",
           component: <EmployeeAccountDetails user={user.user} />,
+        },
+        {
+          name: "changePassword",
+          text: "Şifreyi Değiştir",
+          component: <EmployeeAccountChangePassword user={user.user} />,
         },
         {
           name: "resume",

@@ -36,6 +36,7 @@ export default function EmployeeAccountDetails(props) {
   const validationSchema = Yup.object().shape({
     firstName: Yup.string().required().min(1).max(25),
     lastName: Yup.string().required().min(1).max(20),
+    email: Yup.string().required(),
     birthYear: Yup.number().required().min(1940).max(ageLimit),
     positionId: Yup.number().required(),
   });
@@ -43,6 +44,7 @@ export default function EmployeeAccountDetails(props) {
   const initialValues = {
     firstName: user.firstName,
     lastName: user.lastName,
+    email: user.user.email,
     birthYear: user.birthYear,
     positionId: user.position.id,
   };
@@ -76,6 +78,13 @@ export default function EmployeeAccountDetails(props) {
               iconPosition="left"
             />
           </FormGroup>
+          <HRMSInput
+              label="E-Mail"
+              name="email"
+              placeholder="E-Mail"
+              icon="mail"
+              iconPosition="left"
+            />
           <FormGroup widths="equal">
             <HRMSInput
               label="Doğum Yılı"

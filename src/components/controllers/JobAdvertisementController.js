@@ -5,7 +5,9 @@ import JobAdvertisementService from "../../services/jobAdvertisementService";
 
 import HRMSMultiStateButton from "../../utilities/buttons/HRMSMultiStateButton";
 
-import ListLoader from '../ListLoader';
+import ListLoader from "../ListLoader";
+
+import { waitUntil } from "async-wait-until";
 
 import { Button } from "semantic-ui-react";
 import * as constantsMethods from "../../constants/constantsMethods";
@@ -15,32 +17,29 @@ export default function JobAdvertisementController() {
   let jobAdvertisementService = new JobAdvertisementService();
 
   useEffect(() => {
-    getJobAdvertisements()
+    jobAdvertisementService.getAllOrderByReleaseDateDesc().then((response) => {
+      waitUntil(() => response.data.data != null);
+      setJobAdvertisements(response.data.data);
+    });
   }, []);
 
-  const getJobAdvertisements = () =>  {
-    jobAdvertisementService
-      .getAll()
-      .then((response) => setJobAdvertisements(response.data.data));
-  }
-  
   const confirmedStates = [
     {
-      state:true,
-      color:"green",
+      state: true,
+      color: "green",
       text: "Onaylanmış",
-      icon: "check circle"
+      icon: "check circle",
     },
     {
-      state:false,
-      color:"teal",
+      state: false,
+      color: "teal",
       text: "Onayla",
-      icon:"pencil"
-    }
-  ]
+      icon: "pencil",
+    },
+  ];
 
   const headerCells = [
-    "Id", 
+    "Id",
     "Şirket",
     "İş Pozisyonu",
     "Pozisyon Sayısı",
@@ -49,10 +48,10 @@ export default function JobAdvertisementController() {
     "Yayın Tarihi",
     "Bitiş Tarihi",
     "",
-    ""
+    "",
   ];
 
-  var cells = []
+  var cells = [];
 
   const handleConfirm = (id, confirmed) => {
     jobAdvertisementService
@@ -63,7 +62,6 @@ export default function JobAdvertisementController() {
           response.data.message
         )
       );
-    getJobAdvertisements();
   };
 
   const handleDelete = (id) => {
@@ -75,8 +73,6 @@ export default function JobAdvertisementController() {
           response.data.message
         )
       );
-    getJobAdvertisements();
-
   };
 
   return (
@@ -92,26 +88,47 @@ export default function JobAdvertisementController() {
             subHeader={employer.user.email}
           />
         );
-        cell.push(jobAdvertisement.position.positionName)
-        cell.push(jobAdvertisement.openPositionsAmount)
-        cell.push(jobAdvertisement.city.cityName)
-        cell.push(jobAdvertisement.minSalary != 0 || jobAdvertisement.maxSalary != 0 ?  `${jobAdvertisement.minSalary || "?"} - ${jobAdvertisement.maxSalary || "?"}` : "Bilgi Yok")
-        cell.push(jobAdvertisement.releaseDate.substring(0,10))
-        cell.push(jobAdvertisement.deadline.substring(0,10))
+        cell.push(jobAdvertisement.position.positionName);
+        cell.push(jobAdvertisement.openPositionsAmount);
+        cell.push(jobAdvertisement.city.cityName);
+        cell.push(
+          jobAdvertisement.minSalary != 0 || jobAdvertisement.maxSalary != 0
+            ? `${jobAdvertisement.minSalary || "?"} - ${
+                jobAdvertisement.maxSalary || "?"
+              }`
+            : "Bilgi Yok"
+        );
+        cell.push(jobAdvertisement.releaseDate.substring(0, 10));
+        cell.push(jobAdvertisement.deadline.substring(0, 10));
         cell.push(
           <HRMSMultiStateButton
-            states = {confirmedStates}
-            state = {jobAdvertisement.confirmed}
-            onClick={() => handleConfirm(jobAdvertisement.id, !jobAdvertisement.confirmed)}
+            states={confirmedStates}
+            state={jobAdvertisement.confirmed}
+            onClick={() => {
+              handleConfirm(jobAdvertisement.id, !jobAdvertisement.confirmed);
+              jobAdvertisement.confirmed = !jobAdvertisement.confirmed;
+              setJobAdvertisements([...jobAdvertisements]);
+            }}
           />
         );
-        cell.push(<Button color="red" onClick={() => handleDelete(jobAdvertisement.id)}>İlanı Sil</Button>)
-        cells.push(cell)
+        cell.push(
+          <Button
+            color="red"
+            onClick={() => {
+              handleDelete(jobAdvertisement.id);
+              setJobAdvertisements([
+                ...jobAdvertisements.filter((j) => j.id != jobAdvertisement.id),
+              ]);
+            }}
+          >
+            İlanı Sil
+          </Button>
+        );
+        cells.push(cell);
       })}
       <DataTable headerCells={headerCells} cells={cells} />
 
-      <ListLoader list={jobAdvertisements}/>
-
+      <ListLoader list={jobAdvertisements} />
     </>
   );
 }

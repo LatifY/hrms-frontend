@@ -38,7 +38,7 @@ export default function JobAdvertisementList({
         <h1>İlanlar</h1>
         <span style={{ marginLeft: "auto", color: "grey" }}>
           {jobAdvertisements.length > 0
-            ? total + " ilan bulundu"
+            ? jobAdvertisements.length + " ilan bulundu"
             : null}
         </span>
       </div>

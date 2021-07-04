@@ -4,6 +4,8 @@ import DataTableProfile from "../layouts/DataTableLayout/DataTableProfile";
 import DataTable from "../layouts/DataTableLayout/DataTable";
 import * as constantsMethods from "../../constants/constantsMethods";
 
+import { waitUntil } from "async-wait-until";
+
 import { Button } from "semantic-ui-react";
 import ListLoader from "../ListLoader";
 
@@ -12,13 +14,11 @@ export default function ResumeController() {
   let resumeService = new ResumeService();
 
   useEffect(() => {
-    getResumees()
+    resumeService.getAll().then((response) => {
+      waitUntil(() => response.data.data != null);
+      setResumees(response.data.data);
+    });
   }, []);
-
-  const getResumees = () => {
-    resumeService.getAll().then((response) => setResumees(response.data.data));
-
-  }
 
   const headerCells = [
     "Id",
@@ -43,8 +43,6 @@ export default function ResumeController() {
           response.data.message
         )
       );
-    getResumees();
-
   };
 
   return (
@@ -85,7 +83,13 @@ export default function ResumeController() {
         cell.push(resume.jobExperiences.length);
         cell.push(resume.languages.length);
         cell.push(
-          <Button color="red" onClick={() => handleDelete(resume.id)}>
+          <Button
+            color="red"
+            onClick={() => {
+              handleDelete(resume.id);
+              setResumees([...resumees.filter((r) => r.id != resume.id)]);
+            }}
+          >
             Özgeçmişi Sil
           </Button>
         );

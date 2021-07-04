@@ -35,7 +35,7 @@ export default function JobAdvertisementViewProfile(props) {
         <Card.Content extra>
           <Button
             as={Link}
-            to={`/employer/${employer?.userId}`}
+            to={`/profile/${employer?.userId}`}
             style={{ marginRight: "10px" }}
             basic
             color="green"

@@ -94,9 +94,16 @@ export default function EmployerJobAdvertisement(props) {
     <>
       <div className="header" style={{ display: "flex", width: "100%" }}>
         <h2>{`İş İlanı #${props.index + 1}`}</h2>
-        
-          {jobAdvertisement.confirmed ?  <h4 style={{ marginLeft:"auto" }}> Onaylı <Icon name="check circle" /> </h4> : null}
-        
+
+        {jobAdvertisement.confirmed ? (
+          <h4 style={{ marginLeft: "auto" }}>
+            Onaylı <Icon name="check circle" />{" "}
+          </h4>
+        ) : (
+          <h4 style={{ marginLeft: "auto" }}>
+            Onay Bekliyor <Icon name="clock" />{" "}
+          </h4>
+        )}
       </div>
 
       <Formik

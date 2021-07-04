@@ -10,6 +10,10 @@ export default class JobAdvertisementService{
     return axios.get(constants.JOB_ADVERTISEMENTS)
   }
 
+  getAllOrderByReleaseDateDesc(){
+    return axios.get(`${constants.JOB_ADVERTISEMENTS}/getAllOrderByReleaseDateDesc`)
+  }
+
   getByFilter(pageNo, pageSize, values){
     return axios.post(`${constants.JOB_ADVERTISEMENTS}/getByFilter?pageNo=${pageNo}&pageSize=${pageSize}`, values)
   }

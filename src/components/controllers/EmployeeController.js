@@ -4,6 +4,8 @@ import DataTable from "../layouts/DataTableLayout/DataTable";
 import EmployeeService from "../../services/employeeService";
 import UserService from "../../services/userService";
 
+import { waitUntil } from "async-wait-until";
+
 import { Button } from "semantic-ui-react";
 import * as constantsMethods from "../../constants/constantsMethods";
 import HRMSMultiStateButton from "../../utilities/buttons/HRMSMultiStateButton";
@@ -15,14 +17,10 @@ export default function EmployeeController() {
   let userService = new UserService();
 
   useEffect(() => {
-    getEmployees();
+    employeeService.getAll().then((response) => {
+      setEmployees(response.data.data);
+    });
   }, []);
-
-  const getEmployees = () => {
-    employeeService
-      .getAll()
-      .then((response) => setEmployees(response.data.data));
-  };
 
   const headerCells = ["Id", "Çalışan", "Doğum Yılı", "E-Posta", "", ""];
 
@@ -32,18 +30,18 @@ export default function EmployeeController() {
 
   const verifiedStates = [
     {
-      state:true,
-      color:"green",
+      state: true,
+      color: "green",
       text: "Doğrulanmış",
-      icon: "check circle"
+      icon: "check circle",
     },
     {
-      state:false,
-      color:"teal",
+      state: false,
+      color: "teal",
       text: "Doğrula",
-      icon:"pencil"
-    }
-  ]
+      icon: "pencil",
+    },
+  ];
 
   const handleVerify = (id, verified) => {
     userService
@@ -54,7 +52,6 @@ export default function EmployeeController() {
           response.data.message
         )
       );
-    getEmployees();
   };
 
   const handleDelete = (id) => {
@@ -66,16 +63,13 @@ export default function EmployeeController() {
           response.data.message
         )
       );
-    getEmployees();
-
   };
 
   return (
     <>
-
-      {employees.map((employee) => {
+      {employees.map((employee, index) => {
         var cell = [];
-        const verified = employee.user.verified;
+        let verified = employee.user.verified
         cell.push(employee.userId);
         cell.push(
           <DataTableProfile
@@ -84,22 +78,33 @@ export default function EmployeeController() {
             header={employee.firstName + " " + employee.lastName}
             subHeader={employee.position.positionName}
           />
-        );  
+        );
         cell.push(employee.birthYear);
         cell.push(employee.user.email);
         cell.push(
           <HRMSMultiStateButton
-            states = {verifiedStates}
-            state = {verified}
-            onClick={() => handleVerify(employee.userId, !verified)}
+            states={verifiedStates}
+            state={verified}
+            onClick={() => {
+              handleVerify(employee.userId, !verified);
+              employee.user.verified = !verified
+              setEmployees([...employees])
+            }}
           />
         );
-        cell.push(<Button color="red" onClick={() => handleDelete(employee.userId)}>Hesabı Sil</Button>)
+        cell.push(
+          <Button color="red" onClick={() => {
+            handleDelete(employee.userId)
+            setEmployees([...employees.filter(e => e.userId != employee.userId)])
+          }}>
+            Hesabı Sil
+          </Button>
+        );
         cells.push(cell);
       })}
       <DataTable headerCells={headerCells} cells={cells} />
 
-      <ListLoader list={employees}/>
+      <ListLoader list={employees} />
     </>
   );
 }

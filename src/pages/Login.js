@@ -1,12 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 
-import {
-  Grid,
-  Header,
-  Segment,
-  Button,
-  Message,
-} from "semantic-ui-react";
+import { Grid, Header, Segment, Button, Message } from "semantic-ui-react";
 
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -18,20 +12,20 @@ import undraw_login from "../assets/images/undraw_login.png";
 
 import HRMSInput from "../utilities/fields/HRMSInput";
 import { login } from "../store/actions/userActions";
-
+import { getAllByUserEmail } from "../store/actions/favoriteJobActions";
 
 export default function Login() {
-  const dispatch = useDispatch()
-  const user = useSelector(state => state.user)
-  const history = useHistory()
+  const dispatch = useDispatch();
+
+  const history = useHistory();
   const validationSchema = Yup.object().shape({
     email: Yup.string().email().required().min(1).max(100),
     password: Yup.string().required().min(1).max(100),
   });
 
   const pushToHome = () => {
-    history.push("/")
-  }
+    history.push("/");
+  };
 
   const initialValues = {
     email: undefined,
@@ -39,12 +33,11 @@ export default function Login() {
   };
 
   const onSubmit = (values) => {
-    dispatch(login(values))
+    dispatch(login(values));
+    dispatch(getAllByUserEmail(values.email))
     setTimeout(() => {
-      if(JSON.stringify(user.user) !== {}){
-        pushToHome()
-      }
-     }, 1);
+      pushToHome()
+    }, 1);
   };
 
   return (
@@ -66,20 +59,20 @@ export default function Login() {
             >
               <Form className="ui form">
                 <HRMSInput
-                    name="email"
-                    placeholder="E-Posta"
-                    icon="mail"
-                    iconPosition="left"
-                    type="email"
-                  />
+                  name="email"
+                  placeholder="E-Posta"
+                  icon="mail"
+                  iconPosition="left"
+                  type="email"
+                />
 
-                  <HRMSInput
-                    name="password"
-                    placeholder="Şifre"
-                    icon="lock"
-                    iconPosition="left"
-                    type="password"
-                  />
+                <HRMSInput
+                  name="password"
+                  placeholder="Şifre"
+                  icon="lock"
+                  iconPosition="left"
+                  type="password"
+                />
 
                 <Button type="submit" color="teal" fluid size="large">
                   Giriş Yap

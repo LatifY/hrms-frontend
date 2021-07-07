@@ -1,12 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
 
 import { Card, Button, List, Icon } from "semantic-ui-react";
 
+import JobAdvertisementFavoriteButton from "./JobAdvertisementFavoriteButton";
+
 export default function JobAdvertisementItem({ ...props }) {
-  const [favorite, setFavorite] = useState(false);
   return (
     <>
       <Card fluid>
@@ -55,17 +55,7 @@ export default function JobAdvertisementItem({ ...props }) {
             >
               İlanı incele
             </Button>
-            <Button
-              onClick={() => {
-                toast.info(favorite ? "İlan favorilerden başarıyla kaldırıldı." : "İlan favorilere başarıyla eklendi", {autoClose:1200})
-                setFavorite(!favorite)
-              
-              }}
-              size="tiny"
-              color={favorite === true ? "red" : "white"}
-              circular
-              icon="heart"
-            />
+            <JobAdvertisementFavoriteButton jobAdvertisementId={props.item.id} />
           </div>
         </Card.Content>
       </Card>

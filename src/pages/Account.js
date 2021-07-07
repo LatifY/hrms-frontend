@@ -9,8 +9,11 @@ import EmployeeAccountChangePassword from "../components/layouts/AccountLayout/E
 import EmployeeResume from "../components/layouts/AccountLayout/EmployeeResume";
 
 import PersonnelAccountDetails from "../components/layouts/AccountLayout/PersonnelAccountDetails";
+import PersonnelAccountChangePassword from "../components/layouts/AccountLayout/PersonnelAccountChangePassword";
+
 
 import EmployerAccountDetails from "../components/layouts/AccountLayout/EmployerAccountDetails";
+import EmployerAccountChangePassword from "../components/layouts/AccountLayout/EmployerAccountChangePassword";
 import EmployerJobAdvertisements from "../components/layouts/AccountLayout/EmployerJobAdvertisements";
 
 export default function Account() {
@@ -46,6 +49,11 @@ export default function Account() {
           component: <EmployerAccountDetails user={user.user} />,
         },
         {
+          name: "changePassword",
+          text: "Şifreyi Değiştir",
+          component: <EmployerAccountChangePassword user={user.user} />,
+        },
+        {
           name: "jobAdvertisements",
           text: "İş İlanları",
           component: <EmployerJobAdvertisements user={user.user} />,
@@ -59,13 +67,17 @@ export default function Account() {
           name:"accountDetails",
           text:"Hesap Ayrıntıları",
           component: <PersonnelAccountDetails user={user.user}  />
-        }
+        },
+        {
+          name: "changePassword",
+          text: "Şifreyi Değiştir",
+          component: <PersonnelAccountChangePassword user={user.user} />,
+        },
       ]
     }
   ];
 
-  const option = options.filter((o) => o.userType == user.user.user.userType)[0]
-    .content;
+  const option = options.filter((o) => o.userType == user.user.user.userType)[0].content;
 
   const [component, setComponent] = useState(option[0].component);
   const handleComponent = (component) => {

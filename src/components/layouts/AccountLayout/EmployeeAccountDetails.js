@@ -79,9 +79,9 @@ export default function EmployeeAccountDetails(props) {
             />
           </FormGroup>
           <HRMSInput
-              label="E-Mail"
+              label="E-Posta"
               name="email"
-              placeholder="E-Mail"
+              placeholder="E-Posta"
               icon="mail"
               iconPosition="left"
             />

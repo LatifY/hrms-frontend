@@ -16,11 +16,13 @@ export default function EmployerAccountDetails(props) {
   const validationSchema = Yup.object().shape({
     firstName: Yup.string().required().min(1).max(25),
     lastName: Yup.string().required().min(1).max(20),
+    email: Yup.string().required().max(100)
   });
 
   const initialValues = {
     firstName: user.firstName,
     lastName: user.lastName,
+    email: user.user.email
   };
 
   const onSubmit = (values) => {
@@ -53,7 +55,13 @@ export default function EmployerAccountDetails(props) {
               iconPosition="left"
             />
           </FormGroup>
-
+          <HRMSInput
+              name="email"
+              label="E-Posta"
+              placeholder="E-Posta"
+              icon="mail"
+              iconPosition="left"
+            />
           <br />
           <Button type="submit" color="teal" fluid size="large">
             Güncelle

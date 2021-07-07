@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Button, FormGroup } from "semantic-ui-react";
 
 import { Formik, Form } from "formik";
@@ -9,7 +9,7 @@ import HRMSInput from "../../../utilities/fields/HRMSInput";
 import { useDispatch } from "react-redux";
 import { updatePassword } from "../../../store/actions/userActions";
 
-export default function EmployeeAccountChangePassword(props) {
+export default function EmployerAccountChangePassword(props) {
   const { user } = { ...props };
   const dispatch = useDispatch();
 

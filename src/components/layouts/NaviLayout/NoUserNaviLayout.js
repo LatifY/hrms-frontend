@@ -1,14 +1,16 @@
 import React from "react";
-import NaviButton from "./NaviButton";
+import NaviButtonAnimated from "./NaviButtonAnimated";
+import { Icon } from "semantic-ui-react"
 
 export default function NoUserNaviLayout(props) {
   return (
     <>
-      <NaviButton
+      <NaviButtonAnimated
         color="teal"
         to="/login"
         name="login"
-        text="Giriş Yap"
+        visibleText="Giriş Yap"
+        hiddenText={<Icon name='sign-in' />}
         {...props}
       />
     </>

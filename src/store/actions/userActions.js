@@ -19,6 +19,14 @@ export function addUser(user){
   return { type: types.ADD_USER, payload:user }
 }
 
+export function logout() {
+  return {
+    type: types.DELETE_USER,
+    payload: {},
+  };
+}
+
+
 export const getEmployee = (id) => async (dispatch) => {
   await employeeService.getById(id).then((response) => dispatch(addUser(response.data.data)))
 }
@@ -40,11 +48,10 @@ export const login = (values) => async (dispatch) => {
   });
 };
 
-export function logout() {
-  return {
-    type: types.DELETE_USER,
-    payload: {},
-  };
+export const updatePassword = (values) => async dispatch => {
+  await userService.updatePassword(values).then(response => {
+    constantsMethods.displayToast(response.data.success, response.data.message);
+  })
 }
 
 export const updateEmployee = (values) => async dispatch => {

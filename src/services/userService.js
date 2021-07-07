@@ -37,6 +37,10 @@ export default class UserService{
     return axios.put(`${constants.USERS}/updateVerifiedByEmail?verified=${verified}&email=${email}`)
   }
 
+  updatePassword(values){
+    return axios.put(`${constants.USERS}/updatePassword`, values)
+  }
+
   //delete
   delete(values){
     return axios.delete(constants.USERS, values)

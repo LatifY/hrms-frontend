@@ -13,9 +13,9 @@ export default function jobAdvertisementReducer(state = initialState, { type, pa
       return {...state}
 
     case types.GET_JOB_ADVERTISEMENT:
-      let index = state.jobAdvertisements.findIndex(j => j.id === payload.id)
-      if(index){
-        state.jobAdvertisements[index] = payload
+      let find = state.jobAdvertisements.find(j => j.id === payload.id)
+      if(find){
+        state.jobAdvertisements[state.jobAdvertisements.findIndex(j => j.id === payload.id)] = payload
         return {...state}
       }
       else {

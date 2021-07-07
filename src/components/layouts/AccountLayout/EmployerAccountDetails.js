@@ -16,12 +16,14 @@ export default function EmployerAccountDetails(props) {
 
   const validationSchema = Yup.object().shape({
     companyName: Yup.string().required().min(1).max(100),
+    email: Yup.string().required().max(100),
     phone: Yup.string().required().min(10).max(13),
     website: Yup.string().required().min(1).max(100),
   });
 
   const initialValues = {
     companyName: user.companyName,
+    email: user.user.email,
     phone: user.phone,
     website: user.website,
   };
@@ -44,6 +46,13 @@ export default function EmployerAccountDetails(props) {
             label="Şirket Adı"
             placeholder="Şirket Adı"
             icon="building"
+            iconPosition="left"
+          />
+          <HRMSInput
+            name="email"
+            label="E-Posta"
+            placeholder="E-Posta"
+            icon="mail"
             iconPosition="left"
           />
           <FormGroup widths="equal">

@@ -8,12 +8,17 @@ import { Icon } from "semantic-ui-react"
 export default function LogoutButton() {
   const dispatch = useDispatch()
 
+  const handleLogout = () => {  
+    dispatch(logout())
+    localStorage.clear()
+  }
+
   return (
     <>
       <Button
         animated="fade"
         color="red"
-        onClick={() =>  {dispatch(logout()) }}
+        onClick={() =>  handleLogout()}
         style={{ marginLeft: "1em" }}
 
       >

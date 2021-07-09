@@ -5,7 +5,6 @@ import "../assets/css/style.css";
 import ThemeButton from "../components/layouts/NaviLayout/ThemeButton";
 
 import { useSelector } from "react-redux";
-import { user as initialUser } from "../store/initialValues/user";
 
 import NaviTab from "../components/layouts/NaviLayout/NaviTab";
 
@@ -40,7 +39,7 @@ export default function Navi() {
           />
 
           <Menu.Item position="right">
-            {user.user === initialUser ? (
+            {Object.keys(user.user).length === 0 ? (
               <NoUserNaviLayout />
             ) : (
               <NaviLayout user={user.user} />

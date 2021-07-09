@@ -13,6 +13,7 @@ import undraw_login from "../assets/images/undraw_login.png";
 import HRMSInput from "../utilities/fields/HRMSInput";
 import { login } from "../store/actions/userActions";
 import { getAllByUserEmail } from "../store/actions/favoriteJobActions";
+import { getResume, getAllAbilities, getAllLanguages, getAllSchools, getAllJobExperiences, getAllImages } from "../store/actions/resumeActions";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -32,12 +33,44 @@ export default function Login() {
     password: undefined,
   };
 
+  const userStates = [
+    {
+      type: "employee",
+      function: (data) => {
+        dispatch(getResume(data.userId)).then((response) => {
+          dispatch(getAllAbilities(response.id))
+          dispatch(getAllLanguages(response.id))
+          dispatch(getAllSchools(response.id))
+          dispatch(getAllJobExperiences(response.id))
+          dispatch(getAllImages(response.id))
+        })
+      }
+    },
+    {
+      type: "employer",
+      function: (data) => {
+
+      }
+    },
+    {
+      type: "personnel",
+      function: (data) => {
+
+      }
+    }
+  ]
+
   const onSubmit = (values) => {
-    dispatch(login(values));
-    dispatch(getAllByUserEmail(values.email))
-    setTimeout(() => {
-      pushToHome()
-    }, 1);
+    dispatch(login(values)).then((response) => {
+      if(response != null){
+        dispatch(getAllByUserEmail(values.email))
+        const userState = userStates.find(s => s.type === response.user.userType)
+        userState.function(response)
+        setTimeout(() => {
+          pushToHome()
+        }, 1);
+      }
+    });
   };
 
   return (

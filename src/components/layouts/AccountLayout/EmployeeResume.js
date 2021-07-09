@@ -9,17 +9,11 @@ import EmployeeResumeSchools from "./EmployeeResumeSchools";
 import EmployeeResumeImages from "./EmployeeResumeImages";
 
 import NoResumeError from "./NoResumeError";
-import { useDispatch, useSelector } from "react-redux";
-import { getResume } from "../../../store/actions/resumeActions";
+import { useSelector } from "react-redux";
 
 export default function EmployeeResume(props) {
   const user = props.user;
-  const dispatch = useDispatch();
   const resume = useSelector((state) => state.resume);
-
-  useEffect(() => {
-    dispatch(getResume(user.userId));
-  }, [dispatch]);
 
   const tabs = [
     {

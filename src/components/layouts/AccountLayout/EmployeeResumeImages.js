@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Button, List, Image } from "semantic-ui-react";
 
 import { Formik, Form } from "formik";
@@ -15,10 +15,6 @@ import {
 export default function EmployeeResumeImages() {
   const dispatch = useDispatch();
   const resume = useSelector(state => state.resume)
-
-  useEffect(() => {
-    dispatch(getAllImages(resume.resume.id));
-  }, [dispatch]);
 
   const initialValues = {
     file: undefined,

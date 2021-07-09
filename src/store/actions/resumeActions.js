@@ -39,11 +39,10 @@ const imageService = new ImageService();
 
 //Resume
 export const getResume = (employeeId) => async (dispatch) => {
-  await resumeService
-    .getByEmployeeId(employeeId)
-    .then((response) =>
-      dispatch({ type: types.GET_RESUME, payload: response.data.data })
-    );
+  return await resumeService.getByEmployeeId(employeeId).then((response) => {
+    dispatch({ type: types.GET_RESUME, payload: response.data.data });
+    return response.data.data;
+  });
 };
 
 export const getResumeById = (id) => async (dispatch) => {
@@ -56,14 +55,14 @@ export const getResumeById = (id) => async (dispatch) => {
 
 export const saveResume = (values) => async (dispatch) => {
   await resumeService.save(values).then((response) => {
-    dispatch(getResumeById(values.id))
+    dispatch(getResumeById(values.id));
     constantsMethods.displayToast(response.data.success, response.data.message);
   });
 };
 
 export const updateResume = (values) => async (dispatch) => {
   await resumeService.updateById(values).then((response) => {
-    dispatch(getResumeById(values.id))
+    dispatch(getResumeById(values.id));
     constantsMethods.displayToast(response.data.success, response.data.message);
   });
 };

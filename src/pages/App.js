@@ -3,7 +3,7 @@ import React from "react";
 import { Container } from "semantic-ui-react";
 import "../assets/css/App.css";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 import Dashboard from "./Dashboard";
 import Navi from "./Navi";
@@ -19,6 +19,7 @@ import { ToastContainer } from "react-toastify"
 
 import Account from "./Account";
 import Profile from "./Profile";
+import NotFound from "./NotFound";
 
 //document.body.style.zoom = "75%"
 
@@ -42,7 +43,7 @@ export default function App() {
           <Switch>
             <Route exact path="/"><Home /></Route>
             <Route exact path="/home"><Home /></Route>
-            {/* <Route exact path="/dashboard"><Dashboard /></Route> */}
+            <Route exact path="/dashboard"><Dashboard /></Route>
             <Route exact path="/account"><Account /></Route>
             <Route exact path="/login"><Login /></Route>
             <Route exact path="/register"><Register /></Route>
@@ -51,6 +52,9 @@ export default function App() {
             <Route exact path="/jobAdvertisement/:id" component={JobAdvertisementView} />
 
             <Route exact path="/profile/:userId" component={Profile} />
+
+            <Route exact path="/404" component={NotFound}/>
+            <Route><Redirect to="/404" /></Route>
           </Switch>
         </Container>
         <Footer />

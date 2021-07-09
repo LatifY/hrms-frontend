@@ -25,7 +25,6 @@ export default class FavoriteJobService{
 
   //post
   save(values){
-    console.log(values)
     return axios.post(constants.FAVORITE_JOBS, values)
   }
 

@@ -40,11 +40,13 @@ export const getPersonnel = (id) => async (dispatch) => {
 }
 
 export const login = (values) => async (dispatch) => {
-  await userService.login(values).then((response) => {
+  return await userService.login(values).then((response) => {
     constantsMethods.displayToast(response.data.success, response.data.message);
     if (response.data.success) {
       dispatch(addUser(response.data.data))
+      return response.data.data
     }
+    return null
   });
 };
 

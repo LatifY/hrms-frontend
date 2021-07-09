@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Button, List, FormGroup } from "semantic-ui-react";
 
 import { Formik, Form } from "formik";
@@ -16,10 +16,6 @@ import {
 export default function EmployeeResumeLanguages(props) {
   const dispatch = useDispatch();
   const resume = useSelector((state) => state.resume);
-
-  useEffect(() => {
-    dispatch(getAllLanguages(resume.resume.id));
-  }, [dispatch]);
 
   const validationSchema = Yup.object().shape({
     languageName: Yup.string().required().max(15),

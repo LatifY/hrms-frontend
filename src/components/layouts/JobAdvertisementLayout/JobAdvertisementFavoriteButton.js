@@ -8,8 +8,6 @@ import {
   removeFavorite,
 } from "../../../store/actions/favoriteJobActions";
 
-import { user as initialUser } from "../../../store/initialValues/user";
-
 export default function JobAdvertisementFavoriteButton({ jobAdvertisementId }) {
 
   const dispatch = useDispatch();
@@ -30,7 +28,7 @@ export default function JobAdvertisementFavoriteButton({ jobAdvertisementId }) {
   );
 
   const handleFavorite = () => {
-    if (user.user != initialUser) {
+    if (Object.keys(user.user).length > 0) {
       if (isFavorite) {
         dispatch(removeFavorite(favoriteId));
         setIsFavorite(false)

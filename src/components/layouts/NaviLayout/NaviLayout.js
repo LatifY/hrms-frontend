@@ -1,27 +1,26 @@
-import React from 'react'
+import React from "react";
 
-import EmployeeNaviLayout from "./EmployeeNaviLayout"
-import EmployerNaviLayout from "./EmployerNaviLayout"
-import PersonnelNaviLayout from "./PersonnelNaviLayout"
-
+import EmployeeNaviLayout from "./EmployeeNaviLayout";
+import EmployerNaviLayout from "./EmployerNaviLayout";
+import PersonnelNaviLayout from "./PersonnelNaviLayout";
 
 export default function NaviLayout(props) {
-  let layout
-  if(props.user.user.userType === "employee"){
-    layout = <EmployeeNaviLayout user={props.user} />
-  }
-  else if(props.user.user.userType === "employer"){
+  const userStates = [
+    {
+      type: "employee",
+      layout: <EmployeeNaviLayout user={props.user} />,
+    },
+    {
+      type: "employer",
+      layout: <EmployerNaviLayout user={props.user} />,
+    },
+    {
+      type: "personnel",
+      layout: <PersonnelNaviLayout user={props.user} />,
+    },
+  ];
+  let layout;
+  layout = userStates.find((s) => s.type === props?.user?.user?.userType).layout;
 
-    layout = <EmployerNaviLayout user={props.user} />
-  }
-  else if(props.user.user.userType === "personnel"){
-    layout = <PersonnelNaviLayout user={props.user} />
-  }
-  return (
-    <>
-      {
-        layout
-      }
-    </>
-  )
+  return <>{layout}</>;
 }

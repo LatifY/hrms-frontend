@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Button, List, FormGroup } from "semantic-ui-react";
 
 import { Formik, Form } from "formik";
@@ -18,10 +18,6 @@ export default function EmployeeResumeJobExperiences(props) {
   const resume = useSelector(state => state.resume)
 
   const currentYear = Number(new Date().getFullYear());
-
-  useEffect(() => {
-    dispatch(getAllJobExperiences(resume.resume.id));
-  }, [dispatch]);
 
   const validationSchema = Yup.object().shape({
     companyName: Yup.string().required().max(50),

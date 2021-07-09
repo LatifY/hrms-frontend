@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Button, List } from "semantic-ui-react";
 
 import { Formik, Form } from "formik";
@@ -12,10 +12,6 @@ import { addAbility, getAllAbilities, deleteAbility } from "../../../store/actio
 export default function EmployeeResumeAbilities(props) {
   const dispatch = useDispatch()
   const resume = useSelector(state => state.resume)
-
-  useEffect(() => {
-    dispatch(getAllAbilities(resume.resume.id))
-  }, [dispatch])
 
   const validationSchema = Yup.object().shape({
     abilityName: Yup.string().required().max(30),
